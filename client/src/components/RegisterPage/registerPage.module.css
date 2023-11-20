@@ -1,0 +1,9 @@
+label{
+    padding: 4px;
+    letter-spacing: 1px;
+}
+
+input{
+    margin-bottom: 8px;
+    width: 40%;
+}

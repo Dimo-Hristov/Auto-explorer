@@ -27,6 +27,33 @@ ol {
   padding: 0px;
   margin: 0px;
 }
+/* set forms basic style */
+
+form{
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+form .submitButton{
+  margin-top: 2em;
+  height: 3em;
+  width: 20%;
+  border-radius: 2em;
+  background-color: rgb(235, 158, 99);
+  font-size: 18px;
+  font-weight: 700;
+  border: 1px solid white;
+  color: white;
+}
+
+form .submitButton:hover{
+  cursor: pointer;
+  background-color: rgb(243, 181, 134);
+}
 
 
 /* Set core root defaults */
@@ -64,7 +91,13 @@ section{
   border-radius: 16px;
   box-shadow: 0 0 14px rgba(255, 255, 255, 0.155);
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
 }
+
+
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
