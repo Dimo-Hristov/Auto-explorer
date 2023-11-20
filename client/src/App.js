@@ -1,6 +1,6 @@
 import './global.css';
 import { Header } from "./components/Header/Header";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { CatalogPage } from './components/CatalogPage/CatalogPage';
 import { PublishPage } from './components/PublishPage/PublishPage';
@@ -10,8 +10,11 @@ import { RegisterPage } from './components/RegisterPage/RegisterPage';
 import { AuthContext } from './contexts/AuthContext';
 import * as authService from './services/authService';
 import { passwordValidator } from './validators/passwordValidator';
+import { useState } from 'react';
 
 function App() {
+
+    const [auth, setAuth] = useState({});
 
     const onRegisterSubmit = async (formValues) => {
         const { rePassword, ...data } = formValues;
@@ -25,15 +28,24 @@ function App() {
 
         try {
             const user = await authService.register(data);
-            console.log(user);
+            setAuth(user);
+            Navigate('/')
         } catch (error) {
+            setAuth({})
             alert(error.message)
         }
     }
 
+    const context = {
+        onRegisterSubmit,
+        accessToken: auth.accessToken,
+        username: auth.username,
+        userId: auth._id,
+    }
+
     return (
         <>
-            <AuthContext.Provider value={{ onRegisterSubmit }}>
+            <AuthContext.Provider value={context}>
                 <Header />
                 <main className="app">
                     <Routes>
