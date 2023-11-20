@@ -9,6 +9,11 @@ import { LoginPage } from './components/LoginPage/LoginPage';
 import { RegisterPage } from './components/RegisterPage/RegisterPage';
 
 function App() {
+
+  const onRegisterSubmit = (formValues) => {
+    console.log(formValues);
+  }
+
   return (
     <>
       <Header />
@@ -19,7 +24,7 @@ function App() {
           <Route path='/publish' element={<PublishPage />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/register' element={<RegisterPage onRegisterSubmit={onRegisterSubmit} />} />
         </Routes>
       </main>
     </>

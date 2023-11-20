@@ -1,39 +1,32 @@
 import registerStyles from './registerPage.module.css';
-import { useState } from 'react';
+import { useForm } from '../../hooks/useForm';
 
-export const RegisterPage = () => {
-    const formValues = {
+export const RegisterPage = ({
+    onRegisterSubmit
+}) => {
+
+    const { formValues, onChange, onSubmit } = useForm({
         username: '',
         email: '',
         imageUrl: '',
         age: '',
         password: '',
         rePassword: '',
-    }
+    }, onRegisterSubmit)
 
-    const [values, setValues] = useState(formValues);
-
-    const onRegisterSubmit = (e) => {
-        e.preventDefault();
-        console.log(values);
-    }
-
-    const onChange = (e) => {
-        setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-    }
 
     return (
         <section className={registerStyles}>
             <h1>Register form</h1>
 
-            <form onSubmit={onRegisterSubmit}>
+            <form onSubmit={onSubmit}>
                 <label htmlFor="username">Username</label>
                 <input
                     type="text"
                     name="username"
                     id="username"
                     autoComplete="username"
-                    value={values.username}
+                    value={formValues.username}
                     onChange={onChange}
                 />
 
@@ -43,7 +36,7 @@ export const RegisterPage = () => {
                     name="email"
                     id="email"
                     autoComplete="email"
-                    value={values.email}
+                    value={formValues.email}
                     onChange={onChange}
                 />
 
@@ -53,7 +46,7 @@ export const RegisterPage = () => {
                     name="imageUrl"
                     id="imageUrl"
                     autoComplete="image"
-                    value={values.imageUrl}
+                    value={formValues.imageUrl}
                     onChange={onChange}
                 />
 
@@ -63,7 +56,7 @@ export const RegisterPage = () => {
                     name="age"
                     id="age"
                     autoComplete="age"
-                    value={values.age}
+                    value={formValues.age}
                     onChange={onChange}
                 />
 
@@ -73,7 +66,7 @@ export const RegisterPage = () => {
                     name="password"
                     id="password"
                     autoComplete="new-password"
-                    value={values.password}
+                    value={formValues.password}
                     onChange={onChange}
                 />
 
@@ -83,7 +76,7 @@ export const RegisterPage = () => {
                     name="rePassword"
                     id="rePassword"
                     autoComplete="new-password"
-                    value={values.rePassword}
+                    value={formValues.rePassword}
                     onChange={onChange}
                 />
 
