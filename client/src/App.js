@@ -1,8 +1,14 @@
+import './global.css';
+import { Header } from "./components/Header/Header";
+
 function App() {
   return (
-    <main class="app">
+    <>
+      <Header />
+      <main className="app">
 
-    </main>
+      </main>
+    </>
   );
 }
 
