@@ -1,9 +1,10 @@
 import registerStyles from './registerPage.module.css';
 import { useForm } from '../../hooks/useForm';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useContext } from 'react';
 
-export const RegisterPage = ({
-    onRegisterSubmit
-}) => {
+export const RegisterPage = () => {
+    const { onRegisterSubmit } = useContext(AuthContext)
 
     const { formValues, onChange, onSubmit } = useForm({
         username: '',
@@ -12,7 +13,7 @@ export const RegisterPage = ({
         age: '',
         password: '',
         rePassword: '',
-    }, onRegisterSubmit)
+    }, onRegisterSubmit);
 
 
     return (

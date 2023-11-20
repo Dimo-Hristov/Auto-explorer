@@ -7,28 +7,31 @@ import { PublishPage } from './components/PublishPage/PublishPage';
 import { ProfilePage } from './components/ProfilePage/ProfilePage';
 import { LoginPage } from './components/LoginPage/LoginPage';
 import { RegisterPage } from './components/RegisterPage/RegisterPage';
+import { AuthContext } from './contexts/AuthContext';
 
 function App() {
 
-  const onRegisterSubmit = (formValues) => {
-    console.log(formValues);
-  }
+    const onRegisterSubmit = (formValues) => {
+        console.log(formValues);
+    }
 
-  return (
-    <>
-      <Header />
-      <main className="app">
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/catalog' element={<CatalogPage />} />
-          <Route path='/publish' element={<PublishPage />} />
-          <Route path='/profile' element={<ProfilePage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage onRegisterSubmit={onRegisterSubmit} />} />
-        </Routes>
-      </main>
-    </>
-  );
+    return (
+        <>
+            <AuthContext.Provider value={onRegisterSubmit}>
+                <Header />
+                <main className="app">
+                    <Routes>
+                        <Route path='/' element={<HomePage />} />
+                        <Route path='/catalog' element={<CatalogPage />} />
+                        <Route path='/publish' element={<PublishPage />} />
+                        <Route path='/profile' element={<ProfilePage />} />
+                        <Route path='/login' element={<LoginPage />} />
+                        <Route path='/register' element={<RegisterPage />} />
+                    </Routes>
+                </main>
+            </AuthContext.Provider>
+        </>
+    );
 }
 
 export default App;
