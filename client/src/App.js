@@ -8,16 +8,32 @@ import { ProfilePage } from './components/ProfilePage/ProfilePage';
 import { LoginPage } from './components/LoginPage/LoginPage';
 import { RegisterPage } from './components/RegisterPage/RegisterPage';
 import { AuthContext } from './contexts/AuthContext';
+import * as authService from './services/authService';
+import { passwordValidator } from './validators/passwordValidator';
 
 function App() {
 
-    const onRegisterSubmit = (formValues) => {
-        console.log(formValues);
+    const onRegisterSubmit = async (formValues) => {
+        const { rePassword, ...data } = formValues;
+
+        const passwordMatch = passwordValidator(data.password, rePassword);
+
+        if (!passwordMatch) {
+            alert('Password missmatch!');
+            return;
+        }
+
+        try {
+            const user = await authService.register(data);
+            console.log(user);
+        } catch (error) {
+            alert(error.message)
+        }
     }
 
     return (
         <>
-            <AuthContext.Provider value={onRegisterSubmit}>
+            <AuthContext.Provider value={{ onRegisterSubmit }}>
                 <Header />
                 <main className="app">
                     <Routes>
