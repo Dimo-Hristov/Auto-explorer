@@ -62,7 +62,7 @@ section{
   min-height: 70vh;
   width: 80vw;
   border-radius: 16px;
-  box-shadow: 0 0 4px rgb(255, 255, 255)
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.155)
 }
 
 /* A elements that don't have a class get default styles */

@@ -1,6 +1,6 @@
-import homeStyles from './home.module.css'
+import homeStyles from './homePage.module.css'
 
-export const Home = () => {
+export const HomePage = () => {
     return (
         <section className={homeStyles.home}>
             <h1>Welcome to auto explorer</h1>
