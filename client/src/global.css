@@ -40,7 +40,29 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   background: rgb(34, 65, 86);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+
+ header {
+  background: rgb(189,241,241);
+  background: radial-gradient(circle, rgba(189,241,241,0) 0%, rgb(137, 195, 233) 80%);
+  width: 80vw;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+section{
+  padding: 1em;
+  margin-top: 6em;
+  background-color: rgb(32, 71, 96);
+  min-height: 70vh;
+  width: 80vw;
+  border-radius: 16px;
+  box-shadow: 0 0 4px rgb(255, 255, 255)
 }
 
 /* A elements that don't have a class get default styles */
