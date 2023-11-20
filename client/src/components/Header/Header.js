@@ -1,7 +1,12 @@
 import headerSyles from './header.module.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useContext } from 'react';
 
 export const Header = () => {
+
+    const { username } = useContext(AuthContext)
+
     return (
         <header className={headerSyles.header}>
             <nav>
@@ -13,8 +18,11 @@ export const Header = () => {
                     <li><Link to={'/login'}>Login</Link></li>
                     <li><Link to={'/register'}>Register</Link></li>
                     <li><Link to={'/logout'}>Logout</Link></li>
+
                 </ul>
+                <span>Hello {username}</span>
             </nav>
+
         </header>
     )
 }

@@ -1,6 +1,6 @@
 import './global.css';
 import { Header } from "./components/Header/Header";
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { HomePage } from './components/HomePage/HomePage';
 import { CatalogPage } from './components/CatalogPage/CatalogPage';
 import { PublishPage } from './components/PublishPage/PublishPage';
@@ -13,7 +13,7 @@ import { passwordValidator } from './validators/passwordValidator';
 import { useState } from 'react';
 
 function App() {
-
+    const navigate = useNavigate()
     const [auth, setAuth] = useState({});
 
     const onRegisterSubmit = async (formValues) => {
@@ -29,7 +29,7 @@ function App() {
         try {
             const user = await authService.register(data);
             setAuth(user);
-            Navigate('/')
+            navigate('/');
         } catch (error) {
             setAuth({})
             alert(error.message)
