@@ -25,3 +25,16 @@ export const login = async (data) => {
     const response = await request.json();
     return response
 }
+
+export const logout = async (accessToken) => {
+    const request = await fetch(`${baseUrl}/logout`, {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json',
+            'X-Authorization': accessToken
+        }
+    });
+
+    const response = await request;
+    return response;
+}

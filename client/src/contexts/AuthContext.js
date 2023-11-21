@@ -49,7 +49,6 @@ export const AuthProvider = ({
     const onLoginSubmit = async (formValues) => {
 
         try {
-            console.log(formValues);
             const user = await authService.login(formValues);
             setAuth(user);
 
@@ -61,11 +60,23 @@ export const AuthProvider = ({
         }
     }
 
+    const onLogout = async () => {
+
+        try {
+            authService.logout(auth.accessToken);
+            setAuth({});
+            localStorage.clear()
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
 
 
     const contextValues = {
         onRegisterSubmit,
         onLoginSubmit,
+        onLogout,
         accessToken: auth.accessToken,
         username: auth.username,
         userId: auth._id,
