@@ -18,7 +18,7 @@ export const CarProvider = ({
 
         try {
             const car = await carService.createCar(formValues, accessToken);
-            console.log(car);
+            setCars(state => ([...state, car]));
         } catch (error) {
             alert(error.message)
         }
@@ -27,6 +27,7 @@ export const CarProvider = ({
 
     const contextValues = {
         onCreateCarSubmit,
+        cars
     }
 
     return (
