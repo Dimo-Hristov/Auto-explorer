@@ -5,7 +5,8 @@ import { CarContext } from "../../contexts/CarContext";
 
 export const PublishPage = () => {
 
-    const { onCreateCarSubmit } = useContext(CarContext)
+    const { onCreateCarSubmit } = useContext(CarContext);
+
 
     const { formValues, onChange, onSubmit } = useForm({
         brand: '',

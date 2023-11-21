@@ -50,7 +50,6 @@ export const AuthProvider = ({
 
         try {
             const user = await authService.login(formValues);
-            console.log(user);
             setAuth(user);
 
             const serializedUser = JSON.stringify(user)

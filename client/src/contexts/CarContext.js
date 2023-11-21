@@ -1,4 +1,8 @@
 import { createContext, useState } from "react";
+import * as carService from '../services/carService';
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
+
 
 export const CarContext = createContext();
 
@@ -6,10 +10,18 @@ export const CarProvider = ({
     children
 }) => {
 
+    const { accessToken } = useContext(AuthContext)
+
     const [cars, setCars] = useState({});
 
-    const onCreateCarSubmit = (formValues) => {
-        console.log(formValues);
+    const onCreateCarSubmit = async (formValues) => {
+
+        try {
+            const car = await carService.createCar(formValues, accessToken);
+            console.log(car);
+        } catch (error) {
+            alert(error.message)
+        }
     }
 
 
