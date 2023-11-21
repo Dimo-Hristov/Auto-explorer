@@ -9,28 +9,30 @@ import { LoginPage } from './components/LoginPage/LoginPage';
 import { RegisterPage } from './components/RegisterPage/RegisterPage';
 import { AuthProvider } from './contexts/AuthContext';
 import { Logout } from './components/Logout/Logout';
+import { CarProvider } from './contexts/CarContext';
 
 
 function App() {
 
 
     return (
-        <>
-            <AuthProvider>
-                <Header />
-                <main className="app">
-                    <Routes>
-                        <Route path='/' element={<HomePage />} />
-                        <Route path='/catalog' element={<CatalogPage />} />
-                        <Route path='/publish' element={<PublishPage />} />
-                        <Route path='/profile' element={<ProfilePage />} />
-                        <Route path='/login' element={<LoginPage />} />
-                        <Route path='/register' element={<RegisterPage />} />
-                        <Route path='/logout' element={<Logout />} />
-                    </Routes>
-                </main>
-            </AuthProvider>
-        </>
+
+        <AuthProvider>
+            <Header />
+            <main className="app">
+                <Routes>
+                    <Route path='/' element={<HomePage />} />
+                    <Route path='/catalog' element={<CarProvider><CatalogPage /></CarProvider>} />
+                    <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
+                    <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
+
+                    <Route path='/login' element={<LoginPage />} />
+                    <Route path='/register' element={<RegisterPage />} />
+                    <Route path='/logout' element={<Logout />} />
+                </Routes>
+            </main>
+        </AuthProvider>
+
     );
 }
 
