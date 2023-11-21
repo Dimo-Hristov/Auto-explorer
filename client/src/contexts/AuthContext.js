@@ -50,10 +50,13 @@ export const AuthProvider = ({
 
         try {
             const user = await authService.login(formValues);
+            console.log(user);
             setAuth(user);
 
             const serializedUser = JSON.stringify(user)
             localStorage.setItem('auth', serializedUser);
+
+            navigate('/')
         } catch (error) {
             setAuth({})
             alert(error.message);
@@ -63,7 +66,7 @@ export const AuthProvider = ({
     const onLogout = async () => {
 
         try {
-            authService.logout(auth.accessToken);
+            await authService.logout(auth.accessToken);
             setAuth({});
             localStorage.clear()
         } catch (error) {
@@ -78,7 +81,7 @@ export const AuthProvider = ({
         onLoginSubmit,
         onLogout,
         accessToken: auth.accessToken,
-        username: auth.username,
+        email: auth.email,
         userId: auth._id,
     }
 

@@ -5,8 +5,7 @@ import { useContext } from 'react';
 
 export const Header = () => {
 
-    const { username } = useContext(AuthContext)
-
+    const { email } = useContext(AuthContext)
     return (
         <header className={headerSyles.header}>
             <nav>
@@ -20,7 +19,7 @@ export const Header = () => {
                     <li><Link to={'/logout'}>Logout</Link></li>
 
                 </ul>
-                <span>Hello {username}</span>
+                <span>Hello {email}</span>
             </nav>
 
         </header>
