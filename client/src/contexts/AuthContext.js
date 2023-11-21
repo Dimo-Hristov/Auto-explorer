@@ -1,6 +1,5 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { passwordValidator } from "../validators/passwordValidator";
 import * as authService from '../services/authService';
 
@@ -9,7 +8,19 @@ export const AuthContext = createContext();
 export const AuthProvider = ({
     children
 }) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [auth, setAuth] = useState({});
+
+    useEffect(() => {
+
+        const serializedUser = localStorage.getItem('auth')
+
+        if (serializedUser) {
+            const user = JSON.parse(serializedUser);
+            setAuth(user);
+        }
+    }, []);
+
 
     const onRegisterSubmit = async (formValues) => {
         const { rePassword, ...data } = formValues;
@@ -24,6 +35,10 @@ export const AuthProvider = ({
         try {
             const user = await authService.register(data);
             setAuth(user);
+
+            const serializedUser = JSON.stringify(user)
+            localStorage.setItem('auth', JSON.stringify(serializedUser));
+
             navigate('/');
         } catch (error) {
             setAuth({})
@@ -31,7 +46,7 @@ export const AuthProvider = ({
         }
     }
 
-    const [auth, setAuth] = useState({});
+
 
     const contextValues = {
         onRegisterSubmit,
