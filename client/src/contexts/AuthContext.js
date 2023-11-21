@@ -37,7 +37,7 @@ export const AuthProvider = ({
             setAuth(user);
 
             const serializedUser = JSON.stringify(user)
-            localStorage.setItem('auth', JSON.stringify(serializedUser));
+            localStorage.setItem('auth', serializedUser);
 
             navigate('/');
         } catch (error) {
@@ -46,10 +46,26 @@ export const AuthProvider = ({
         }
     }
 
+    const onLoginSubmit = async (formValues) => {
+
+        try {
+            console.log(formValues);
+            const user = await authService.login(formValues);
+            setAuth(user);
+
+            const serializedUser = JSON.stringify(user)
+            localStorage.setItem('auth', serializedUser);
+        } catch (error) {
+            setAuth({})
+            alert(error.message);
+        }
+    }
+
 
 
     const contextValues = {
         onRegisterSubmit,
+        onLoginSubmit,
         accessToken: auth.accessToken,
         username: auth.username,
         userId: auth._id,

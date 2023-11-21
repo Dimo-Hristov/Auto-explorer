@@ -18,7 +18,7 @@ export const RegisterPage = () => {
 
     return (
         <section className={registerStyles}>
-            <h1>Register form</h1>
+            <h1>Register</h1>
 
             <form onSubmit={onSubmit}>
                 <label htmlFor="username">Username</label>
