@@ -76,7 +76,7 @@ body {
 
  header {
   background: rgb(189,241,241);
-  background: radial-gradient(circle, rgba(189,241,241,0) 0%, rgb(137, 195, 233) 80%);
+  background: radial-gradient(circle, rgba(189,241,241,0) 0%, rgb(95, 175, 229) 80%);
   width: 80vw;
   padding: 1em;
   border-radius: 8px;

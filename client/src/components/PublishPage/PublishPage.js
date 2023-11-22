@@ -12,6 +12,7 @@ export const PublishPage = () => {
         brand: '',
         model: '',
         year: '',
+        imageUrl: '',
         color: '',
         engine: '',
         hp: '',
@@ -42,7 +43,7 @@ export const PublishPage = () => {
                 <input type="number"
                     name="year"
                     id="year"
-                    value={formValues.yearr}
+                    value={formValues.year}
                     onChange={onChange}
                 />
 
@@ -67,6 +68,14 @@ export const PublishPage = () => {
                     name="hp"
                     id="hp"
                     value={formValues.hp}
+                    onChange={onChange}
+                />
+
+                <label htmlFor="hp">Image url</label>
+                <input type="text"
+                    name="imageUrl"
+                    id="imageUrl"
+                    value={formValues.imageUrl}
                     onChange={onChange}
                 />
 

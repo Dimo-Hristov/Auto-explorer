@@ -20,12 +20,14 @@ export const CarProvider = ({
     useEffect(() => {
         carService.getAllCars()
             .then(cars => setCars(cars))
+            .catch(err => alert(err.message))
     }, [])
 
     const onCreateCarSubmit = async (formValues) => {
 
         try {
             const car = await carService.createCar(formValues, accessToken);
+            // check if state is emprty
             setCars(state => [...state, car]);
             //  TODO: navigate go created car details page
             navigate('/catalog')
