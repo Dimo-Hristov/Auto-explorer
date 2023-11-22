@@ -5,7 +5,7 @@ export const CatalogItem = ({
     car
 }) => {
     return (
-        <li className={catalogItemStyles.catalogItem} navi>
+        <li className={catalogItemStyles.catalogItem}>
             <Link to={`/catalog/${car._id}`}>
                 <img src={car.imageUrl} alt={car.brand} />
                 <h2>{car.brand} - {car.model}</h2>

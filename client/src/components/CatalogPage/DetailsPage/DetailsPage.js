@@ -8,9 +8,16 @@ export const DetailsPage = () => {
     const { cars } = useContext(CarContext);
 
     const selectedCar = cars.find(x => x._id === carId);
+
+    if (!selectedCar) {
+        // TODO: add loader
+        return <p>Loading...</p>;
+    }
+
     return (
         <section className={detailsPageStyles.detailsPage}>
             <h1>Technical details</h1>
+            {/* TODO: add likes */}
 
             <img src={selectedCar.imageUrl} alt={selectedCar.brand} />
             <table>
@@ -35,6 +42,12 @@ export const DetailsPage = () => {
                     </tr>
                 </tbody>
             </table>
+
+            <div className="buttons">
+                <button className="submitButton">Like</button>
+                <button className="submitButton" >Edit</button>
+                <button className="submitButton" >Delete</button>
+            </div>
         </section>
     )
 }

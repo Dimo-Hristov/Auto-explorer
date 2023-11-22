@@ -26,6 +26,7 @@ function App() {
                         <Route path='/' element={<CarProvider><HomePage /></CarProvider>} />
                         <Route path='/catalog' element={<CarProvider><CatalogPage /></CarProvider>} />
                         <Route path='/catalog/:carId' element={<CarProvider><DetailsPage /></CarProvider>} />
+                        <Route path='/profile/:carId/edit' element={<CarProvider><PublishPage /></CarProvider>} />
                         <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
                         <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
 
