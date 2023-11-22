@@ -10,6 +10,7 @@ import { RegisterPage } from './components/RegisterPage/RegisterPage';
 import { AuthProvider } from './contexts/AuthContext';
 import { Logout } from './components/Logout/Logout';
 import { CarProvider } from './contexts/CarContext';
+import { DetailsPage } from './components/CatalogPage/DetailsPage/DetailsPage';
 
 
 function App() {
@@ -23,8 +24,10 @@ function App() {
                 <Routes>
                     <Route path='/' element={<CarProvider><HomePage /></CarProvider>} />
                     <Route path='/catalog' element={<CarProvider><CatalogPage /></CarProvider>} />
+                    <Route path='/catalog/:carId' element={<CarProvider><DetailsPage /></CarProvider>} />
                     <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
                     <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
+
 
                     <Route path='/login' element={<LoginPage />} />
                     <Route path='/register' element={<RegisterPage />} />
