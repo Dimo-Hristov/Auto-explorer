@@ -11,31 +11,33 @@ import { AuthProvider } from './contexts/AuthContext';
 import { Logout } from './components/Logout/Logout';
 import { CarProvider } from './contexts/CarContext';
 import { DetailsPage } from './components/CatalogPage/DetailsPage/DetailsPage';
+import { Footer } from './components/Footer/Footer';
 
 
 function App() {
 
 
     return (
+        <>
+            <AuthProvider>
+                <Header />
+                <main className="app">
+                    <Routes>
+                        <Route path='/' element={<CarProvider><HomePage /></CarProvider>} />
+                        <Route path='/catalog' element={<CarProvider><CatalogPage /></CarProvider>} />
+                        <Route path='/catalog/:carId' element={<CarProvider><DetailsPage /></CarProvider>} />
+                        <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
+                        <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
 
-        <AuthProvider>
-            <Header />
-            <main className="app">
-                <Routes>
-                    <Route path='/' element={<CarProvider><HomePage /></CarProvider>} />
-                    <Route path='/catalog' element={<CarProvider><CatalogPage /></CarProvider>} />
-                    <Route path='/catalog/:carId' element={<CarProvider><DetailsPage /></CarProvider>} />
-                    <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
-                    <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
 
-
-                    <Route path='/login' element={<LoginPage />} />
-                    <Route path='/register' element={<RegisterPage />} />
-                    <Route path='/logout' element={<Logout />} />
-                </Routes>
-            </main>
-        </AuthProvider>
-
+                        <Route path='/login' element={<LoginPage />} />
+                        <Route path='/register' element={<RegisterPage />} />
+                        <Route path='/logout' element={<Logout />} />
+                    </Routes>
+                </main>
+            </AuthProvider>
+            <Footer />
+        </>
     );
 }
 
