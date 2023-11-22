@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { CarContext } from "../../../contexts/CarContext";
 import { useContext } from "react";
-import detailsPageStyles from './detailsPage.module.css'
+import detailsPageStyles from './detailsPage.module.css';
+import { Link } from "react-router-dom";
 
 export const DetailsPage = () => {
     const { carId } = useParams();
@@ -44,9 +45,9 @@ export const DetailsPage = () => {
             </table>
 
             <div className="buttons">
-                <button className="submitButton">Like</button>
-                <button className="submitButton" >Edit</button>
-                <button className="submitButton" >Delete</button>
+                <Link className="submitButton" to={`/catalog/${selectedCar._id}/like`}>Like</Link>
+                <Link className="submitButton" to={`/catalog/${selectedCar._id}/edit`}>Edit</Link>
+                <Link className="submitButton" to={`/catalog/${selectedCar._id}/delete`}>Delete</Link>
             </div>
         </section>
     )

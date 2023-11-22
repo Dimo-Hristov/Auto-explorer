@@ -27,10 +27,22 @@ export const CarProvider = ({
 
         try {
             const car = await carService.createCar(formValues, accessToken);
-            // check if state is emprty
+
             setCars(state => [...state, car]);
-            //  TODO: navigate go created car details page
-            navigate('/catalog')
+            navigate(`/catalog/${car._id}`);
+
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
+    const onEditCarSubmit = async (formValues, carId) => {
+        try {
+
+            const updatedCar = await carService.editCar(formValues, carId, accessToken);
+
+            setCars(state => state = state.map(x => x._id === updatedCar._id ? x = updatedCar : x));
+            navigate(`/catalog/${carId}`)
         } catch (error) {
             alert(error.message)
         }
@@ -39,6 +51,7 @@ export const CarProvider = ({
 
     const contextValues = {
         onCreateCarSubmit,
+        onEditCarSubmit,
         cars
     }
 

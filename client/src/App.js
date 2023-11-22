@@ -12,6 +12,7 @@ import { Logout } from './components/Logout/Logout';
 import { CarProvider } from './contexts/CarContext';
 import { DetailsPage } from './components/CatalogPage/DetailsPage/DetailsPage';
 import { Footer } from './components/Footer/Footer';
+import { EditCar } from './components/CatalogPage/EditItem/EditCar';
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
                         <Route path='/' element={<CarProvider><HomePage /></CarProvider>} />
                         <Route path='/catalog' element={<CarProvider><CatalogPage /></CarProvider>} />
                         <Route path='/catalog/:carId' element={<CarProvider><DetailsPage /></CarProvider>} />
-                        <Route path='/profile/:carId/edit' element={<CarProvider><PublishPage /></CarProvider>} />
+                        <Route path='/catalog/:carId/edit' element={<CarProvider><EditCar /></CarProvider>} />
                         <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
                         <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
 

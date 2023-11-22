@@ -22,13 +22,16 @@
   }
 
   .detailsPage div{
+    margin-top: 1em;
     width: 80%;
   }
 
-  .detailsPage button{
+  .detailsPage a{
+    padding: 8px 2em;
     margin: 1em;
+    height: 50%;
     width: 15%;
-    border-radius: 2em;
+    border-radius: 1em;
     background: radial-gradient(circle, rgba(178, 204, 204, 0.338) 0%, rgba(63, 108, 143, 0.526) 70%);
     font-size: 18px;
     color: white;
@@ -36,7 +39,7 @@
 
   }
 
-  .detailsPage button:hover{
+  .detailsPage a:hover{
     background: radial-gradient(circle, rgba(178, 204, 204, 0.338) 0%, rgba(195, 214, 228, 0.383) 90%);
     cursor: pointer;
   }

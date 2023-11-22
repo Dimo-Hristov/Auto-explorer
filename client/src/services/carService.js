@@ -14,3 +14,9 @@ export const getAllCars = async () => {
     const resData = response.json();
     return resData;
 }
+
+export const editCar = async (formValues, carId, accessToken) => {
+    const response = await requester.put(`${baseUrl}/${carId}`, formValues, accessToken);
+    const resData = response.json();
+    return resData;
+}
