@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import * as carService from '../services/carService';
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
@@ -15,6 +15,12 @@ export const CarProvider = ({
     const { accessToken } = useContext(AuthContext)
 
     const [cars, setCars] = useState([]);
+
+
+    useEffect(() => {
+        carService.getAllCars()
+            .then(cars => setCars(cars))
+    }, [])
 
     const onCreateCarSubmit = async (formValues) => {
 
