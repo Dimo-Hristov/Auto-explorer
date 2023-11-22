@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { CarContext } from "../../contexts/CarContext";
+import { CatalogItem } from "./CatalogItem/CatalogItem";
 
 export const CatalogPage = () => {
     const { cars } = useContext(CarContext);
 
     return (
         <section>
+            <h1>Cars catalog</h1>
             <ul>
                 {cars.map(car => (
-                    <li key={car._id}>{car.brand}</li>
+                    <CatalogItem key={car._id} car={car} />
                 ))}
             </ul>
         </section>
