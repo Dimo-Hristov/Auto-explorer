@@ -29,5 +29,5 @@ export const deleteCar = async (carId, accessToken) => {
     } catch (error) {
         alert(error.message)
     }
-
 }
+

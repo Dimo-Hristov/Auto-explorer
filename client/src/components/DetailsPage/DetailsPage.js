@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 export const DetailsPage = () => {
     const { carId } = useParams();
-    const { cars, onDeleteCarSubmit } = useContext(CarContext);
-    const [isDeleteClicked, setIsDeleteClicked] = useState(false)
+    const { cars, onDeleteCarSubmit, onLikeSubmit } = useContext(CarContext);
+    const [isDeleteClicked, setIsDeleteClicked] = useState(false);
 
 
 
@@ -48,6 +48,7 @@ export const DetailsPage = () => {
                     </tr>
                 </tbody>
             </table>
+            <p>{selectedCar.likes}</p>
 
             {isDeleteClicked
                 ? (
@@ -59,7 +60,7 @@ export const DetailsPage = () => {
                 )
                 : (
                     <div className="buttons">
-                        <Link className="submitButton" to={`/catalog/${selectedCar._id}/like`}>Like</Link>
+                        <button onClick={() => onLikeSubmit({ likedCar: carId })}>Like</button>
                         <Link className="submitButton" to={`/catalog/${selectedCar._id}/edit`}>Edit</Link>
                         <button onClick={() => setIsDeleteClicked(true)}>Delete</button>
                     </div>

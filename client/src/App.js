@@ -30,8 +30,6 @@ function App() {
                         <Route path='/catalog/:carId/edit' element={<CarProvider><EditCar /></CarProvider>} />
                         <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
                         <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
-
-
                         <Route path='/login' element={<LoginPage />} />
                         <Route path='/register' element={<RegisterPage />} />
                         <Route path='/logout' element={<Logout />} />

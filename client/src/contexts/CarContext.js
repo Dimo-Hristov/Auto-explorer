@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import * as carService from '../services/carService';
+import * as likeService from '../services/likeService';
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -60,11 +61,23 @@ export const CarProvider = ({
         }
     }
 
+    const onLikeSubmit = async (carId) => {
+        const response = await likeService.LikeCar(carId, accessToken);
+        const like = await response.json();
+        console.log(like);
+        setCars(state => state.map(x =>
+            x._id === like.likedCar
+                ? { ...x, likes: x.likes++ }
+                : x
+        ))
+    }
+
 
     const contextValues = {
         onCreateCarSubmit,
         onEditCarSubmit,
         onDeleteCarSubmit,
+        onLikeSubmit,
         cars
     }
 
