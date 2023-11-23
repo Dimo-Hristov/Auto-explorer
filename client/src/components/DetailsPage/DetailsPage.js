@@ -6,10 +6,19 @@ import { Link } from "react-router-dom";
 
 export const DetailsPage = () => {
     const { carId } = useParams();
-    const { cars, onDeleteCarSubmit, onLikeSubmit } = useContext(CarContext);
+    const { cars, onDeleteCarSubmit, onLikeSubmit, onUnlikeSubmit } = useContext(CarContext);
     const [isDeleteClicked, setIsDeleteClicked] = useState(false);
+    const [isLiked, setIsLiked] = useState(false);
 
+    const likeCarHandler = () => {
+        onLikeSubmit({ likedCar: carId })
+        setIsLiked(true)
+    }
 
+    const unLikeCarHandler = () => {
+        setIsLiked(false)
+        onUnlikeSubmit(carId)
+    }
 
     const selectedCar = cars.find(x => x._id === carId);
 
@@ -48,19 +57,25 @@ export const DetailsPage = () => {
                     </tr>
                 </tbody>
             </table>
-            <p>{selectedCar.likes}</p>
+            <p>{selectedCar.likes.length}</p>
 
             {isDeleteClicked
                 ? (
                     <div className="deleteMessage">
                         <p>Are you sure that you want to delete this offer ?</p>
                         <button onClick={() => onDeleteCarSubmit(carId)}>Yes</button>
-                        <button onClick={() => setIsDeleteClicked(false)}>No</button>
+                        <button onClick={(e) => setIsDeleteClicked()}>No</button>
                     </div>
                 )
                 : (
                     <div className="buttons">
-                        <button onClick={() => onLikeSubmit({ likedCar: carId })}>Like</button>
+                        {isLiked
+                            ? (<button onClick={unLikeCarHandler}>Unlike</button>)
+                            : (<button onClick={likeCarHandler}>Like</button>)
+                        }
+
+
+
                         <Link className="submitButton" to={`/catalog/${selectedCar._id}/edit`}>Edit</Link>
                         <button onClick={() => setIsDeleteClicked(true)}>Delete</button>
                     </div>

@@ -13,7 +13,7 @@ export const CarProvider = ({
 }) => {
     const navigate = useNavigate();
 
-    const { accessToken } = useContext(AuthContext)
+    const { accessToken, userId } = useContext(AuthContext)
 
     const [cars, setCars] = useState([]);
 
@@ -62,15 +62,43 @@ export const CarProvider = ({
     }
 
     const onLikeSubmit = async (carId) => {
-        const response = await likeService.LikeCar(carId, accessToken);
-        const like = await response.json();
-        console.log(like);
-        setCars(state => state.map(x =>
-            x._id === like.likedCar
-                ? { ...x, likes: x.likes++ }
-                : x
-        ))
+        try {
+            const response = await likeService.LikeCar(carId, accessToken);
+            const like = await response.json();
+            console.log(like);
+            setCars(state => state.map(x =>
+                x._id === like.likedCar
+                    ? { ...x, likes: [...x.likes, like] }
+                    : x
+            ))
+        } catch (error) {
+            alert(error.message)
+        }
     }
+
+    const onUnlikeSubmit = async (carId) => {
+        const currentCarIndex = cars.findIndex(x => x._id === carId);
+        const currentCar = cars[currentCarIndex];
+        const myLikeIndex = currentCar.likes.findIndex(x => x._ownerId === userId);
+
+        if (myLikeIndex !== -1) {
+            const updatedLikes = [...currentCar.likes];
+            updatedLikes.splice(myLikeIndex, 1);
+
+            try {
+                await likeService.unLikeCar(currentCar.likes[myLikeIndex]._id, accessToken);
+
+                setCars(state => {
+                    const updatedCars = [...state];
+                    updatedCars[currentCarIndex] = { ...currentCar, likes: updatedLikes };
+                    return updatedCars;
+                });
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+    };
+
 
 
     const contextValues = {
@@ -78,6 +106,7 @@ export const CarProvider = ({
         onEditCarSubmit,
         onDeleteCarSubmit,
         onLikeSubmit,
+        onUnlikeSubmit,
         cars
     }
 

@@ -16,7 +16,7 @@ export const PublishPage = () => {
         color: '',
         engine: '',
         hp: '',
-        likes: 0,
+        likes: [],
     }, onCreateCarSubmit);
 
     return (
