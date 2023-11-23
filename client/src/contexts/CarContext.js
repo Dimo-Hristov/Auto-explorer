@@ -29,11 +29,9 @@ export const CarProvider = ({
                     if (response) {
                         likes = await response.json();
                     }
-                    console.log(likes);
                     return { ...car, likes };
                 })
             );
-            console.log(carsWithLikes);
             setCars(carsWithLikes);
 
         };

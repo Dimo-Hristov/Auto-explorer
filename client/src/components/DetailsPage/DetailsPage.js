@@ -1,13 +1,17 @@
 import { useParams } from "react-router-dom";
 import { CarContext } from "../../contexts/CarContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import detailsPageStyles from './detailsPage.module.css';
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const DetailsPage = () => {
+    const { userId } = useContext(AuthContext)
     const { carId } = useParams();
     const { cars, onDeleteCarSubmit, onLikeSubmit, onUnlikeSubmit } = useContext(CarContext);
     const [isDeleteClicked, setIsDeleteClicked] = useState(false);
+
+
     const [isLiked, setIsLiked] = useState(false);
 
     const likeCarHandler = () => {
@@ -22,10 +26,18 @@ export const DetailsPage = () => {
 
     const selectedCar = cars.find(x => x._id === carId);
 
+
+    const likedByCurrentUser = selectedCar?.likes?.some((like) => like._ownerId === userId);
+    useEffect(() => {
+        setIsLiked(likedByCurrentUser);
+    }, [likedByCurrentUser]);
+
     if (!selectedCar) {
         // TODO: add loader
         return <p>Loading...</p>;
     }
+
+
 
 
 
