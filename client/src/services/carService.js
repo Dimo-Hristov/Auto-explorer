@@ -21,3 +21,13 @@ export const editCar = async (formValues, carId, accessToken) => {
     const resData = response.json();
     return resData;
 }
+
+export const deleteCar = async (carId, accessToken) => {
+    try {
+        return await requester.del(`${baseUrl}/${carId}`, undefined, accessToken)
+
+    } catch (error) {
+        alert(error.message)
+    }
+
+}

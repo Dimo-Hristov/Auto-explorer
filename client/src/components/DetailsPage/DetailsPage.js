@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const DetailsPage = () => {
     const { carId } = useParams();
-    const { cars } = useContext(CarContext);
+    const { cars, onDeleteCarSubmit } = useContext(CarContext);
     const [isDeleteClicked, setIsDeleteClicked] = useState(false)
 
 
@@ -53,7 +53,7 @@ export const DetailsPage = () => {
                 ? (
                     <div className="deleteMessage">
                         <p>Are you sure that you want to delete this offer ?</p>
-                        <Link to={`/catalog/${selectedCar._id}/delete`}>Yes</Link>
+                        <button onClick={() => onDeleteCarSubmit(carId)}>Yes</button>
                         <button onClick={() => setIsDeleteClicked(false)}>No</button>
                     </div>
                 )

@@ -43,10 +43,20 @@ export const CarProvider = ({
 
             const updatedCar = await carService.editCar(formValues, carId, accessToken);
 
-            setCars(state => state = state.map(x => x._id === updatedCar._id ? x = updatedCar : x));
+            setCars(state => state.map(x => x._id === updatedCar._id ? x = updatedCar : x));
             navigate(`/catalog/${carId}`)
         } catch (error) {
             alert(error.message)
+        }
+    }
+
+    const onDeleteCarSubmit = async (carId) => {
+        try {
+            await carService.deleteCar(carId, accessToken);
+            setCars(state => state.filter(x => x._id !== carId))
+            navigate('/catalog')
+        } catch (error) {
+
         }
     }
 
@@ -54,6 +64,7 @@ export const CarProvider = ({
     const contextValues = {
         onCreateCarSubmit,
         onEditCarSubmit,
+        onDeleteCarSubmit,
         cars
     }
 
