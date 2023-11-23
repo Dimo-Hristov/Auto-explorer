@@ -19,7 +19,11 @@ export const CarProvider = ({
 
     useEffect(() => {
         carService.getAllCars()
-            .then(cars => setCars(cars))
+            .then(cars => {
+                if (!cars.message === 'Resource not found') {
+                    setCars(cars)
+                }
+            })
             .catch(err => alert(err.message))
     }, [])
 

@@ -11,8 +11,9 @@ export const createCar = async (formValues, accessToken) => {
 
 export const getAllCars = async () => {
     const response = await requester.get(baseUrl);
+
     const resData = response.json();
-    return resData;
+    return resData
 }
 
 export const editCar = async (formValues, carId, accessToken) => {

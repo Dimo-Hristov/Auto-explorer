@@ -15,9 +15,13 @@ const requester = async (method, url, data, token) => {
         options.body = JSON.stringify(data);
     }
 
+
     const response = await fetch(url, options);
 
-    return response
+    return response;
+
+
+
 }
 
 export const get = requester.bind(null, 'GET')
