@@ -26,7 +26,7 @@
     width: 80%;
   }
 
-  .detailsPage a{
+  .detailsPage a,  .detailsPage button{
     padding: 8px 2em;
     margin: 1em;
     height: 50%;
@@ -39,7 +39,7 @@
 
   }
 
-  .detailsPage a:hover{
+  .detailsPage a:hover,   .detailsPage button:hover{
     background: radial-gradient(circle, rgba(178, 204, 204, 0.338) 0%, rgba(195, 214, 228, 0.383) 90%);
     cursor: pointer;
   }
