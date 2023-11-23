@@ -10,9 +10,9 @@ import { RegisterPage } from './components/RegisterPage/RegisterPage';
 import { AuthProvider } from './contexts/AuthContext';
 import { Logout } from './components/Logout/Logout';
 import { CarProvider } from './contexts/CarContext';
-import { DetailsPage } from './components/CatalogPage/DetailsPage/DetailsPage';
 import { Footer } from './components/Footer/Footer';
-import { EditCar } from './components/CatalogPage/EditItem/EditCar';
+import { DetailsPage } from './components/DetailsPage/DetailsPage';
+import { EditCar } from './components/EditCar/EditCar';
 
 
 function App() {

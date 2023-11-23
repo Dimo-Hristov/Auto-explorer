@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { CarContext } from "../../../contexts/CarContext";
+import { CarContext } from "../../contexts/CarContext";
 import { useContext, useState } from "react";
 import detailsPageStyles from './detailsPage.module.css';
 import { Link } from "react-router-dom";
