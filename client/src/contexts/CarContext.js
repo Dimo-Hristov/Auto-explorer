@@ -19,12 +19,28 @@ export const CarProvider = ({
 
 
     useEffect(() => {
-        carService.getAllCars()
-            .then(cars => {
-                setCars(cars)
-            })
-            .catch(err => alert(err.message))
-    }, [])
+        const fetchData = async () => {
+
+            const fetchedCars = await carService.getAllCars();
+            const carsWithLikes = await Promise.all(
+                fetchedCars.map(async (car) => {
+                    const response = await likeService.getCarLikes(car._id, accessToken);
+                    let likes = []
+                    if (response) {
+                        likes = await response.json();
+                    }
+                    console.log(likes);
+                    return { ...car, likes };
+                })
+            );
+            console.log(carsWithLikes);
+            setCars(carsWithLikes);
+
+        };
+
+        fetchData();
+    }, [accessToken]);
+
 
     const onCreateCarSubmit = async (formValues) => {
 
