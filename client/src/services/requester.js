@@ -15,11 +15,8 @@ const requester = async (method, url, data, token) => {
         options.body = JSON.stringify(data);
     }
 
-
     const response = await fetch(url, options);
-
     return response;
-
 
 
 }

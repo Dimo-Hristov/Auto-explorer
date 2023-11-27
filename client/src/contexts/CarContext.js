@@ -22,17 +22,19 @@ export const CarProvider = ({
         const fetchData = async () => {
 
             const fetchedCars = await carService.getAllCars();
-            const carsWithLikes = await Promise.all(
-                fetchedCars.map(async (car) => {
-                    const response = await likeService.getCarLikes(car._id, accessToken);
-                    let likes = []
-                    if (response) {
-                        likes = await response.json();
-                    }
-                    return { ...car, likes };
-                })
-            );
-            setCars(carsWithLikes);
+            if (fetchedCars.length < 1) {
+                const carsWithLikes = await Promise.all(
+                    fetchedCars.map(async (car) => {
+                        const response = await likeService.getCarLikes(car._id, accessToken);
+                        let likes = []
+                        if (response) {
+                            likes = await response.json();
+                        }
+                        return { ...car, likes };
+                    })
+                );
+                setCars(carsWithLikes);
+            }
 
         };
 
