@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export const DetailsPage = () => {
-    const { userId } = useContext(AuthContext)
+    const { userId } = useContext(AuthContext);
     const { carId } = useParams();
     const { cars, onDeleteCarSubmit, onLikeSubmit, onUnlikeSubmit } = useContext(CarContext);
     const [isDeleteClicked, setIsDeleteClicked] = useState(false);
@@ -39,8 +39,6 @@ export const DetailsPage = () => {
 
 
 
-
-
     return (
         <section className={detailsPageStyles.detailsPage}>
             <h1>Technical details</h1>
@@ -69,7 +67,7 @@ export const DetailsPage = () => {
                     </tr>
                 </tbody>
             </table>
-            <p>{selectedCar.likes.length}</p>
+            <p>{selectedCar.likes?.length || 0}</p>
 
             {isDeleteClicked
                 ? (
@@ -81,15 +79,23 @@ export const DetailsPage = () => {
                 )
                 : (
                     <div className="buttons">
-                        {isLiked
-                            ? (<button onClick={unLikeCarHandler}>Unlike</button>)
-                            : (<button onClick={likeCarHandler}>Like</button>)
-                        }
+                        {userId !== undefined && (
+                            <>
+                                {isLiked
+                                    ? (<button onClick={unLikeCarHandler}>Unlike</button>)
+                                    : (<button onClick={likeCarHandler}>Like</button>)
+                                }
 
 
+                                {userId === selectedCar._ownerId && (
+                                    <>
+                                        <Link className="submitButton" to={`/catalog/${selectedCar._id}/edit`}>Edit</Link>
+                                        <button onClick={() => setIsDeleteClicked(true)}>Delete</button>
+                                    </>
+                                )}
+                            </>
+                        )}
 
-                        <Link className="submitButton" to={`/catalog/${selectedCar._id}/edit`}>Edit</Link>
-                        <button onClick={() => setIsDeleteClicked(true)}>Delete</button>
                     </div>
                 )}
 
