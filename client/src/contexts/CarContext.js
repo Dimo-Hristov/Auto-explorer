@@ -59,7 +59,7 @@ export const CarProvider = ({
 
             const updatedCar = await carService.editCar(formValues, carId, accessToken);
 
-            setCars(state => state.map(x => x._id === updatedCar._id ? x = updatedCar : x));
+            setCars(state => state.map(x => x._id === updatedCar._id ? x = { ...updatedCar, likes: x.likes } : x));
             navigate(`/catalog/${carId}`)
         } catch (error) {
             alert(error.message)
