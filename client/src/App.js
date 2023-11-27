@@ -13,6 +13,7 @@ import { CarProvider } from './contexts/CarContext';
 import { Footer } from './components/Footer/Footer';
 import { DetailsPage } from './components/DetailsPage/DetailsPage';
 import { EditCar } from './components/EditCar/EditCar';
+import { ActionButtons } from './components/ActionButtons/ActionButtons';
 
 
 function App() {

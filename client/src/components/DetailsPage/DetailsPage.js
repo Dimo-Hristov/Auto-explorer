@@ -1,36 +1,16 @@
 import { useParams } from "react-router-dom";
 import { CarContext } from "../../contexts/CarContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import detailsPageStyles from './detailsPage.module.css';
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext";
+import { ActionButtons } from "../ActionButtons/ActionButtons";
+
 
 export const DetailsPage = () => {
-    const { userId } = useContext(AuthContext);
+
     const { carId } = useParams();
-    const { cars, onDeleteCarSubmit, onLikeSubmit, onUnlikeSubmit } = useContext(CarContext);
-    const [isDeleteClicked, setIsDeleteClicked] = useState(false);
-
-
-    const [isLiked, setIsLiked] = useState(false);
-
-    const likeCarHandler = () => {
-        onLikeSubmit({ likedCar: carId })
-        setIsLiked(true)
-    }
-
-    const unLikeCarHandler = () => {
-        setIsLiked(false)
-        onUnlikeSubmit(carId)
-    }
+    const { cars } = useContext(CarContext);
 
     const selectedCar = cars.find(x => x._id === carId);
-
-
-    const likedByCurrentUser = selectedCar?.likes?.some((like) => like._ownerId === userId);
-    useEffect(() => {
-        setIsLiked(likedByCurrentUser);
-    }, [likedByCurrentUser]);
 
     if (!selectedCar) {
         // TODO: add loader
@@ -42,7 +22,6 @@ export const DetailsPage = () => {
     return (
         <section className={detailsPageStyles.detailsPage}>
             <h1>Technical details</h1>
-            {/* TODO: add likes */}
 
             <img src={selectedCar.imageUrl} alt={selectedCar.brand} />
             <table>
@@ -67,37 +46,8 @@ export const DetailsPage = () => {
                     </tr>
                 </tbody>
             </table>
-            <p>{selectedCar.likes?.length || 0}</p>
 
-            {isDeleteClicked
-                ? (
-                    <div className="deleteMessage">
-                        <p>Are you sure that you want to delete this offer ?</p>
-                        <button onClick={() => onDeleteCarSubmit(carId)}>Yes</button>
-                        <button onClick={(e) => setIsDeleteClicked()}>No</button>
-                    </div>
-                )
-                : (
-                    <div className="buttons">
-                        {userId !== undefined && (
-                            <>
-                                {isLiked
-                                    ? (<button onClick={unLikeCarHandler}>Unlike</button>)
-                                    : (<button onClick={likeCarHandler}>Like</button>)
-                                }
-
-
-                                {userId === selectedCar._ownerId && (
-                                    <>
-                                        <Link className="submitButton" to={`/catalog/${selectedCar._id}/edit`}>Edit</Link>
-                                        <button onClick={() => setIsDeleteClicked(true)}>Delete</button>
-                                    </>
-                                )}
-                            </>
-                        )}
-
-                    </div>
-                )}
+            <ActionButtons selectedCar={selectedCar} />
 
         </section>
     )
