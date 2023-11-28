@@ -7,15 +7,16 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
+    gap: 1em;
 }
 
 .home ul li{
     height: var(--ul-height);
-
+    flex-basis: 33;
 }
 
 .home>ul>li>a {
-    margin-top: 3rem;
+    margin-top: 3em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,14 +24,10 @@
 }
 
 .home ul li:nth-child(2) {
-    height: calc(var(--ul-height) - 100px);
+    height: calc(var(--ul-height) - 30px);
 }
 
 .home ul li:nth-child(3) {
-    height: calc(var(--ul-height) - 200px);
+    height: calc(var(--ul-height) - 60px);
 }
 
-.home li img {
-    width: 70%;
-    height: auto;
-}
