@@ -1,18 +1,21 @@
-import homeStyles from './homePage.module.css'
+import { CarContext } from '../../contexts/CarContext';
+import { CatalogItem } from '../CatalogPage/CatalogItem/CatalogItem';
+import homeStyles from './homePage.module.css';
+import { useContext } from 'react';
+
 
 export const HomePage = () => {
+
+    const { cars } = useContext(CarContext);
+    const sortedCars = cars.sort((a, b) => b.likes.length - a.likes.length).slice(0, 3);
+
     return (
         <section className={homeStyles.home}>
             <h1>Welcome to auto explorer</h1>
             <p>In the list below you can see the most liked cars </p>
 
             <ul>
-                <li>car1</li>
-                <li>car12</li>
-                <li>car3</li>
-                <li>car4</li>
-                <li>car5</li>
-                <li>car6</li>
+                {sortedCars.map((x) => <CatalogItem car={x} key={x._id} />)}
             </ul>
 
         </section>

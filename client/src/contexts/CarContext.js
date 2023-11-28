@@ -29,8 +29,9 @@ export const CarProvider = ({
                     let likes = []
                     if (response) {
                         likes = await response.json();
+                        return { ...car, likes };
                     }
-                    return { ...car, likes };
+                    return { ...car, likes: [] }
                 })
             );
             setCars(carsWithLikes);

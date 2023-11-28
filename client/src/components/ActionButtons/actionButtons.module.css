@@ -1,0 +1,25 @@
+.actionButtons {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.actionButtons a,  .actionButtons button{
+    display: inline-block;
+    min-width: 80px;
+    padding: 2px 12px;
+    margin: 0 8px;
+    border-radius: 8px;
+    background: radial-gradient(circle, rgba(178, 204, 204, 0.338) 0%, rgba(63, 108, 143, 0.526) 70%);
+    font-size: 18px;
+    color: white;
+    border: none;
+
+  }
+
+  .actionButtons a:hover,   .actionButtons button:hover{
+    background: radial-gradient(circle, rgba(178, 204, 204, 0.338) 0%, rgba(195, 214, 228, 0.383) 90%);
+    cursor: pointer;
+  }

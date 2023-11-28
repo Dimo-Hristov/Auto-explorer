@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CarContext } from "../../contexts/CarContext";
 import { AuthContext } from "../../contexts/AuthContext";
+import actionButtonsStyles from './actionButtons.module.css'
 
 
 export const ActionButtons = ({
@@ -28,7 +29,7 @@ export const ActionButtons = ({
 
 
     useEffect(() => {
-        const isLiked = selectedCar?.likes?.some((like) => like._ownerId === userId)
+        const isLiked = selectedCar.likes?.some((like) => like._ownerId === userId)
         setIsLiked(isLiked);
     }, [selectedCar, userId]);
 
@@ -36,8 +37,7 @@ export const ActionButtons = ({
 
     return (
 
-        <>
-            <span>{selectedCar.likes?.length || 0}</span>
+        <div className={actionButtonsStyles.actionButtons}>
 
             {isDeleteClicked
                 ? (
@@ -69,6 +69,6 @@ export const ActionButtons = ({
                     </div>
                 )}
 
-        </>
+        </div>
     )
 }

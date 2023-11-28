@@ -24,6 +24,7 @@ export const DetailsPage = () => {
             <h1>Technical details</h1>
 
             <img src={selectedCar.imageUrl} alt={selectedCar.brand} />
+            <span>Likes: {selectedCar.likes?.length || 0}</span>
             <table>
                 <thead>
                     <tr>

@@ -1,1 +1,36 @@
+:root {
+    --ul-height: 600px;
+}
 
+.home ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.home ul li{
+    height: var(--ul-height);
+
+}
+
+.home>ul>li>a {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home ul li:nth-child(2) {
+    height: calc(var(--ul-height) - 100px);
+}
+
+.home ul li:nth-child(3) {
+    height: calc(var(--ul-height) - 200px);
+}
+
+.home li img {
+    width: 70%;
+    height: auto;
+}
