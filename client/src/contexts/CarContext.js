@@ -21,10 +21,10 @@ export const CarProvider = ({
     useEffect(() => {
         const fetchData = async () => {
 
-            const fetchedCars = await carService.getAllCars();
+            let fetchedCars = await carService.getAllCars();
 
             const carsWithLikes = await Promise.all(
-                fetchedCars?.map(async (car) => {
+                fetchedCars.map(async (car) => {
                     const response = await likeService.getCarLikes(car._id, accessToken);
                     let likes = []
                     if (response) {

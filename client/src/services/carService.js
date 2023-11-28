@@ -11,7 +11,9 @@ export const createCar = async (formValues, accessToken) => {
 
 export const getAllCars = async () => {
     const response = await requester.get(baseUrl);
-
+    if (!response.ok && response.status === 404) {
+        return []
+    }
     const resData = response.json();
     return resData
 }
