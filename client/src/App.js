@@ -33,6 +33,10 @@ function App() {
                         <Route path='/login' element={<LoginPage />} />
                         <Route path='/register' element={<RegisterPage />} />
                         <Route path='/logout' element={<Logout />} />
+                        <Route path='*' element={(<div>
+                            <h1>Not Found</h1>
+                            <p>Sorry, the page you are looking for does not exist.</p>
+                        </div>)} />
                     </Routes>
                 </main>
             </AuthProvider>
