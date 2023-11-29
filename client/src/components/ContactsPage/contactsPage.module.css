@@ -17,23 +17,23 @@
   }
   
   .contacts p {
-    color: #555;
+    color: #f8dfdf;
     line-height: 1.6;
   }
   
-  form {
+  .contacts form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 1.5em;
   }
   
-  label {
+  .contacts label {
     margin-bottom: 0.5em;
-    color: #333;
+    color: #0d0808;
   }
   
-  input,
+  .contacts input,
   textarea {
     width: 100%;
     padding: 0.5em;
@@ -43,7 +43,7 @@
   }
   
   button {
-    background-color: #007bff; /* Bootstrap Primary Blue */
+    background-color: #007bff; 
     color: #fff;
     padding: 0.7em 1em;
     border: none;
@@ -52,6 +52,6 @@
   }
   
   button:hover {
-    background-color: #0056b3; /* Slightly darker shade on hover */
+    background-color: #0056b3; 
   }
   

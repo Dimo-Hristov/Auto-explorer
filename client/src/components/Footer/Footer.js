@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export const Footer = () => {
     return (
         <footer className={footerStyles.footer}>
-            <p>&copy; 2023 Your Website Name. All rights reserved.</p>
+            <p>&copy; 2023 Auto-explorer. All rights reserved.</p>
 
             <nav>
                 <ul>
