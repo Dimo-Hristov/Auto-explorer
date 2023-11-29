@@ -63,14 +63,22 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
-  /* min-height: 100vh; */
+  min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   background: rgb(34, 65, 86);
   color: white;
   display: flex;
-  align-items: center;
   justify-content: center;
+
+}
+
+#root{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 
 
@@ -79,7 +87,7 @@ body {
   background: radial-gradient(circle, rgba(189,241,241,0) 0%, rgb(95, 175, 229) 80%);
   width: 80vw;
   padding: 1em;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px ;
 }
 
 section{
