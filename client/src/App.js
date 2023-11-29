@@ -13,6 +13,7 @@ import { CarProvider } from './contexts/CarContext';
 import { Footer } from './components/Footer/Footer';
 import { DetailsPage } from './components/DetailsPage/DetailsPage';
 import { EditCar } from './components/EditCar/EditCar';
+import { AboutPage } from './components/AboutPage/AboutPage';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                         <Route path='/login' element={<LoginPage />} />
                         <Route path='/register' element={<RegisterPage />} />
                         <Route path='/logout' element={<Logout />} />
+                        <Route path='/about' element={<AboutPage />}></Route>
                         <Route path='*' element={(<div>
                             <h1>Not Found</h1>
                             <p>Sorry, the page you are looking for does not exist.</p>

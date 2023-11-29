@@ -1,0 +1,25 @@
+.about {
+    padding: 2em 12em;
+    text-align: center;
+    background-color: rgb(32, 71, 96);
+    border-radius: 8px;
+    margin: 2em auto;
+
+  }
+  
+  .about h2 {
+    color: #ffa07a; /* Light Salmon */
+  }
+  
+  .about p {
+    color: #b0c4de; /* Light Steel Blue */
+    line-height: 1.6;
+  }
+  
+  .features h3 {
+    color: #87ceeb; /* Sky Blue */
+  }
+  
+  .features li {
+    color: #d3d3d3; /* Light Gray */
+  }
