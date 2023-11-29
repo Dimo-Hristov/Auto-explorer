@@ -14,6 +14,7 @@ import { Footer } from './components/Footer/Footer';
 import { DetailsPage } from './components/DetailsPage/DetailsPage';
 import { EditCar } from './components/EditCar/EditCar';
 import { AboutPage } from './components/AboutPage/AboutPage';
+import { ContactsPage } from './components/ContactsPage/ContactsPage';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                         <Route path='/register' element={<RegisterPage />} />
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/about' element={<AboutPage />}></Route>
+                        <Route path='/contact' element={<ContactsPage />}></Route>
                         <Route path='*' element={(<div>
                             <h1>Not Found</h1>
                             <p>Sorry, the page you are looking for does not exist.</p>
