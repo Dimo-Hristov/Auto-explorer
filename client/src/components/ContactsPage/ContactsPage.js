@@ -1,6 +1,14 @@
 import contactsPageStyles from './contactsPage.module.css'
 
 export const ContactsPage = () => {
+
+    const onContactFormSubmit = (e) => {
+        e.preventDefault();
+
+        // implement functionality
+    }
+
+
     return (
         <section >
             <div className={contactsPageStyles.contacts}>
@@ -9,7 +17,7 @@ export const ContactsPage = () => {
                     Have a question or feedback? Feel free to reach out to us using the
                     form below.
                 </p>
-                <form>
+                <form onSubmit={onContactFormSubmit}>
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" name="name" required />
 
