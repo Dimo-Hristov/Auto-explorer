@@ -9,7 +9,8 @@ export const ProfilePage = () => {
     const { cars } = useContext(CarContext);
     const { userId } = useContext(AuthContext)
 
-    const [filteredCars, setFilteredCars] = useState([])
+    const [filteredCars, setFilteredCars] = useState([]);
+    const [title, setTitle] = useState('Please select one of the options')
 
     const showLikedCars = () => {
         const likedCars = cars.filter((car) =>
@@ -17,16 +18,19 @@ export const ProfilePage = () => {
         );
 
         setFilteredCars(likedCars);
+        setTitle('Data not found')
     }
 
     const showUploadedCars = () => {
         const uploadedCars = cars.filter((car) => car._ownerId === userId);
-        setFilteredCars(uploadedCars)
+        setFilteredCars(uploadedCars);
+        setTitle('Data not found')
     }
 
 
     return (
         <section className={profilePageStyles.profile}>
+
             <div className="buttons">
                 <button onClick={showLikedCars}>Show liked cars</button>
                 <button onClick={showUploadedCars}>Show uploaded cars</button>
@@ -34,7 +38,7 @@ export const ProfilePage = () => {
 
 
             {filteredCars === undefined || filteredCars.length === 0 ? (
-                <h3>Not records found</h3>
+                <h3>{title}</h3>
             ) : (
                 <ul>
                     {filteredCars.map(x => <CatalogItem key={x._id} car={x} />)}
