@@ -33,7 +33,7 @@ export const ProfilePage = () => {
             </div>
 
 
-            {filteredCars.lerngth < 1 ? (
+            {filteredCars === undefined || filteredCars.length === 0 ? (
                 <h3>Not records found</h3>
             ) : (
                 <ul>
