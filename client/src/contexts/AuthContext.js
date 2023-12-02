@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { passwordValidator } from "../validators/passwordValidator";
 import * as authService from '../services/authService';
 
 export const AuthContext = createContext();
@@ -24,13 +23,6 @@ export const AuthProvider = ({
 
     const onRegisterSubmit = async (formValues) => {
         const { rePassword, ...data } = formValues;
-
-        const passwordMatch = passwordValidator(data.password, rePassword);
-
-        if (!passwordMatch) {
-            alert('Password missmatch!');
-            return;
-        }
 
         try {
             const user = await authService.register(data);
