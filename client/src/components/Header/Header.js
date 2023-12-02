@@ -28,7 +28,10 @@ export const Header = () => {
 
 
                 </ul>
-                <span>Hello {email}</span>
+                {email && (
+                    <span>Hello {email}</span>
+                )}
+
             </nav>
 
         </header>
