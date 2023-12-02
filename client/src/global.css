@@ -48,17 +48,11 @@ form .submitButton {
   font-weight: 700;
   border: 1px solid white;
   color: white;
-}
-
-form .submitButton.active {
   background-color: rgb(230, 134, 62);
   cursor: pointer;
 }
 
-form .submitButton.disabled {
-  cursor: not-allowed;
-  background-color: rgb(235, 187, 147);
-}
+
 
 /* Set core root defaults */
 html:focus-within {

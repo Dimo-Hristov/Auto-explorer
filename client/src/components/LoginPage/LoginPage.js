@@ -11,7 +11,9 @@ export const LoginPage = () => {
         password: '',
     }, onLoginSubmit);
 
-    const { validatorsHandler, errors } = useFormValidate(formValues)
+    const { validatorsHandler, errors } = useFormValidate(formValues);
+
+
 
     return (
         <section>
@@ -49,7 +51,6 @@ export const LoginPage = () => {
                     type="submit"
                     value="Submit"
                     className={`submitButton ${Object.values(errors).some(error => error !== '') ? 'disabled' : 'active'}`}
-                    disabled={Object.values(errors).some(error => error !== '')}
                 />
             </form>
         </section>

@@ -10,6 +10,10 @@ export const useForm = (initialValues, onSubmitHandler, carId) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        const isEmptyFields = Object.values(formValues).some(value => value === '');
+        if (isEmptyFields) {
+            return
+        }
 
         onSubmitHandler(formValues, carId);
     }
