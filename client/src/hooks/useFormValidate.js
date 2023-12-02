@@ -16,7 +16,6 @@ export const useFormValidate = (formValues) => {
         () => validators[fieldName](formValues, errors, setErrors, fieldName);
 
 
-
     return {
         validatorsHandler,
         errors
@@ -31,27 +30,24 @@ const username = (formValues, errors, setErrors, fieldName) => {
 
 
 const email = (formValues, errors, setErrors, fieldName) => {
-    // Basic validations (empty check and length check)
+
     basicValidations(formValues, errors, setErrors, fieldName);
 
-    // Email-specific validation only if basic validations pass
-    if (!errors[fieldName]) {
+
+    if (!formValues[fieldName]) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formValues[fieldName])) {
             setErrors(state => ({
                 ...state,
                 [fieldName]: 'Invalid email format',
             }));
-            console.log(errors);
-        } else {
-            // Clear the error if the email format is valid
-            if (errors[fieldName]) {
-                setErrors(state => ({
-                    ...state,
-                    [fieldName]: '',
-                }));
-            }
+        } else if (errors[fieldName]) {
+            setErrors(state => ({
+                ...state,
+                [fieldName]: '',
+            }));
         }
+
     }
 };
 
@@ -85,14 +81,13 @@ const age = (formValues, errors, setErrors, fieldName) => {
             ...state,
             [fieldName]: 'Age should be between 18 and 100 years old',
         }));
-    } else {
-        if (errors[fieldName]) {
-            setErrors(state => ({
-                ...state,
-                [fieldName]: '',
-            }));
-        }
+    } else if (errors[fieldName]) {
+        setErrors(state => ({
+            ...state,
+            [fieldName]: '',
+        }));
     }
+
 }
 const password = (formValues, errors, setErrors, fieldName) => {
     basicValidations(formValues, errors, setErrors, fieldName);
@@ -105,7 +100,7 @@ const rePassword = (formValues, errors, setErrors, fieldName) => {
             ...state,
             [fieldName]: 'Passwords do not match'
         }));
-    } else {
+    } else if (errors[fieldName]) {
         setErrors(state => ({
             ...state,
             [fieldName]: '',
@@ -115,31 +110,20 @@ const rePassword = (formValues, errors, setErrors, fieldName) => {
 
 // Length > 0 && Length > 30
 function basicValidations(formValues, errors, setErrors, selectedField) {
-    if (formValues[selectedField] === '') {
+    if (formValues[selectedField] === '' || formValues[selectedField] === undefined) {
         setErrors(state => ({
             ...state,
             [selectedField]: `${selectedField} is required`
         }));
-    } else {
-        if (errors[selectedField]) {
-            setErrors(state => ({
-                ...state,
-                [selectedField]: '',
-            }));
-        }
-    }
-
-    if (formValues[selectedField].length > 30) {
+    } else if (formValues[selectedField].length > 30) {
         setErrors(state => ({
             ...state,
             [selectedField]: `Maximum length is 30 symbols`
         }));
-    } else {
-        if (errors[selectedField]) {
-            setErrors(state => ({
-                ...state,
-                [selectedField]: '',
-            }));
-        }
+    } else if (errors[selectedField]) {
+        setErrors(state => ({
+            ...state,
+            [selectedField]: '',
+        }));
     }
 }
