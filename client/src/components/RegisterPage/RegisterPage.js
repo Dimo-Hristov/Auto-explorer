@@ -2,6 +2,7 @@ import registerStyles from './registerPage.module.css';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useContext, useState } from 'react';
+import { usernameValidator } from '../../validators/formValidator';
 
 export const RegisterPage = () => {
     const { onRegisterSubmit } = useContext(AuthContext)
@@ -14,26 +15,15 @@ export const RegisterPage = () => {
         password: '',
         rePassword: '',
     }, onRegisterSubmit);
+
     const [errors, setErrors] = useState({});
 
-    const usernameValidator = () => {
+    const validatorsHandlers = (fieldName) => {
+        return () => {
+            usernameValidator(formValues, errors, setErrors, fieldName);
+        };
+    };
 
-        if (formValues.username === '') {
-            console.log('set');
-            setErrors(state => ({
-                ...state,
-                username: 'username cannot be empty field'
-            }))
-        } else {
-            if (errors.username) {
-                console.log('clean');
-                setErrors(state => ({
-                    ...state,
-                    username: '',
-                }))
-            }
-        }
-    }
 
     return (
         <section className={registerStyles}>
@@ -51,7 +41,7 @@ export const RegisterPage = () => {
                     autoComplete="username"
                     value={formValues.username}
                     onChange={onChange}
-                    onBlur={usernameValidator}
+                    onBlur={validatorsHandlers('username')}
                 />
 
 
