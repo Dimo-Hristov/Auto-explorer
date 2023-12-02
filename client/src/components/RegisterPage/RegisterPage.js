@@ -14,12 +14,24 @@ export const RegisterPage = () => {
         password: '',
         rePassword: '',
     }, onRegisterSubmit);
-    const [usernameError, setUsernameError] = useState('');
+    const [errors, setErrors] = useState({});
 
     const usernameValidator = () => {
+
         if (formValues.username === '') {
             console.log('set');
-            setUsernameError('Field must be fullfilled')
+            setErrors(state => ({
+                ...state,
+                username: 'username cannot be empty field'
+            }))
+        } else {
+            if (errors.username) {
+                console.log('clean');
+                setErrors(state => ({
+                    ...state,
+                    username: '',
+                }))
+            }
         }
     }
 
@@ -29,8 +41,8 @@ export const RegisterPage = () => {
 
             <form onSubmit={onSubmit}>
                 <label htmlFor="username">Username</label>
-                {usernameError !== '' && (
-                    <p>Invalid username</p>
+                {errors.username && (
+                    <p>{errors.username}</p>
                 )}
                 <input
                     type="text"
