@@ -1,7 +1,7 @@
 import registerStyles from './registerPage.module.css';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 export const RegisterPage = () => {
     const { onRegisterSubmit } = useContext(AuthContext)
@@ -14,7 +14,14 @@ export const RegisterPage = () => {
         password: '',
         rePassword: '',
     }, onRegisterSubmit);
+    const [usernameError, setUsernameError] = useState('');
 
+    const usernameValidator = () => {
+        if (formValues.username === '') {
+            console.log('set');
+            setUsernameError('Field must be fullfilled')
+        }
+    }
 
     return (
         <section className={registerStyles}>
@@ -22,6 +29,9 @@ export const RegisterPage = () => {
 
             <form onSubmit={onSubmit}>
                 <label htmlFor="username">Username</label>
+                {usernameError !== '' && (
+                    <p>Invalid username</p>
+                )}
                 <input
                     type="text"
                     name="username"
@@ -29,7 +39,9 @@ export const RegisterPage = () => {
                     autoComplete="username"
                     value={formValues.username}
                     onChange={onChange}
+                    onBlur={usernameValidator}
                 />
+
 
                 <label htmlFor="email">Email</label>
                 <input
