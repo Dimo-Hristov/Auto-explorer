@@ -2,7 +2,7 @@ import registerStyles from './registerPage.module.css';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useContext, useState } from 'react';
-import { usernameValidator } from '../../validators/formValidator';
+import * as validators from '../../validators/formValidator';
 
 export const RegisterPage = () => {
     const { onRegisterSubmit } = useContext(AuthContext)
@@ -20,7 +20,34 @@ export const RegisterPage = () => {
 
     const validatorsHandlers = (fieldName) => {
         return () => {
-            usernameValidator(formValues, errors, setErrors, fieldName);
+            switch (fieldName) {
+                case 'username':
+                    validators.username(formValues, errors, setErrors, fieldName);
+                    break;
+
+                case 'email':
+                    validators.email(formValues, errors, setErrors, fieldName);
+                    break;
+
+                case 'imageUrl':
+                    validators.email(formValues, errors, setErrors, fieldName);
+                    break;
+
+                case 'age':
+                    validators.email(formValues, errors, setErrors, fieldName);
+                    break;
+
+                case 'password':
+                    validators.email(formValues, errors, setErrors, fieldName);
+                    break;
+
+                case 'rePassword':
+                    validators.email(formValues, errors, setErrors, fieldName);
+                    break;
+
+                default:
+                    break;
+            }
         };
     };
 
@@ -59,7 +86,7 @@ export const RegisterPage = () => {
                     onBlur={validatorsHandlers('email')}
                 />
 
-                <label htmlFor="imageUrl">Image</label>
+                <label htmlFor="imageUrl">Image URL</label>
                 {errors.imageUrl && (
                     <p>{errors.imageUrl}</p>
                 )}

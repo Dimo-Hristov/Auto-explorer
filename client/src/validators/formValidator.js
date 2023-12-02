@@ -1,4 +1,19 @@
-export const usernameValidator = (formValues, errors, setErrors, fieldName) => {
+export const username = (formValues, errors, setErrors, fieldName) => {
+    basicValidations(formValues, errors, setErrors, fieldName);
+}
+export const email = (formValues, errors, setErrors, fieldName) => {
+    basicValidations(formValues, errors, setErrors, fieldName);
+}
+export const imageUrl = (formValues, errors, setErrors, fieldName) => {
+    basicValidations(formValues, errors, setErrors, fieldName);
+}
+export const age = (formValues, errors, setErrors, fieldName) => {
+    basicValidations(formValues, errors, setErrors, fieldName);
+}
+export const password = (formValues, errors, setErrors, fieldName) => {
+    basicValidations(formValues, errors, setErrors, fieldName);
+}
+export const rePass = (formValues, errors, setErrors, fieldName) => {
     basicValidations(formValues, errors, setErrors, fieldName);
 }
 
