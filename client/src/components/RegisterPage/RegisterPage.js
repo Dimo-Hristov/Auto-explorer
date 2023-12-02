@@ -46,6 +46,9 @@ export const RegisterPage = () => {
 
 
                 <label htmlFor="email">Email</label>
+                {errors.email && (
+                    <p>{errors.email}</p>
+                )}
                 <input
                     type="text"
                     name="email"
@@ -53,9 +56,13 @@ export const RegisterPage = () => {
                     autoComplete="email"
                     value={formValues.email}
                     onChange={onChange}
+                    onBlur={validatorsHandlers('email')}
                 />
 
                 <label htmlFor="imageUrl">Image</label>
+                {errors.imageUrl && (
+                    <p>{errors.imageUrl}</p>
+                )}
                 <input
                     type="text"
                     name="imageUrl"
@@ -63,9 +70,13 @@ export const RegisterPage = () => {
                     autoComplete="image"
                     value={formValues.imageUrl}
                     onChange={onChange}
+                    onBlur={validatorsHandlers('imageUrl')}
                 />
 
                 <label htmlFor="age">Age</label>
+                {errors.age && (
+                    <p>{errors.age}</p>
+                )}
                 <input
                     type="number"
                     name="age"
@@ -73,9 +84,13 @@ export const RegisterPage = () => {
                     autoComplete="age"
                     value={formValues.age}
                     onChange={onChange}
+                    onBlur={validatorsHandlers('age')}
                 />
 
                 <label htmlFor="password">Password</label>
+                {errors.password && (
+                    <p>{errors.password}</p>
+                )}
                 <input
                     type="password"
                     name="password"
@@ -83,9 +98,13 @@ export const RegisterPage = () => {
                     autoComplete="new-password"
                     value={formValues.password}
                     onChange={onChange}
+                    onBlur={validatorsHandlers('password')}
                 />
 
                 <label htmlFor="rePassword">Repeat password</label>
+                {errors.rePassword && (
+                    <p>{errors.rePassword}</p>
+                )}
                 <input
                     type="password"
                     name="rePassword"
@@ -93,6 +112,7 @@ export const RegisterPage = () => {
                     autoComplete="new-password"
                     value={formValues.rePassword}
                     onChange={onChange}
+                    onBlur={validatorsHandlers('rePassword')}
                 />
 
                 <input type="submit" value='Submit' className='submitButton' />
