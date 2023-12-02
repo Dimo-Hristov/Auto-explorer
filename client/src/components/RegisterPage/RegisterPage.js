@@ -30,19 +30,19 @@ export const RegisterPage = () => {
                     break;
 
                 case 'imageUrl':
-                    validators.email(formValues, errors, setErrors, fieldName);
+                    validators.imageUrl(formValues, errors, setErrors, fieldName);
                     break;
 
                 case 'age':
-                    validators.email(formValues, errors, setErrors, fieldName);
+                    validators.age(formValues, errors, setErrors, fieldName);
                     break;
 
                 case 'password':
-                    validators.email(formValues, errors, setErrors, fieldName);
+                    validators.password(formValues, errors, setErrors, fieldName);
                     break;
 
                 case 'rePassword':
-                    validators.email(formValues, errors, setErrors, fieldName);
+                    validators.rePassword(formValues, errors, setErrors, fieldName);
                     break;
 
                 default:
