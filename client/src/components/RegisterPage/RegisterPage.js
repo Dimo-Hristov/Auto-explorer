@@ -1,8 +1,8 @@
 import registerStyles from './registerPage.module.css';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
-import { useContext, useState } from 'react';
-import * as validators from '../../validators/formValidator';
+import { useContext } from 'react';
+import { useFormValidate } from '../../hooks/useFormValidate';
 
 export const RegisterPage = () => {
     const { onRegisterSubmit } = useContext(AuthContext)
@@ -16,11 +16,7 @@ export const RegisterPage = () => {
         rePassword: '',
     }, onRegisterSubmit);
 
-    const [errors, setErrors] = useState({});
-
-    const validatorsHandler = (fieldName) =>
-        () => validators[fieldName](formValues, errors, setErrors, fieldName);
-
+    const { validatorsHandler, errors } = useFormValidate(formValues);
 
     return (
         <section className={registerStyles}>

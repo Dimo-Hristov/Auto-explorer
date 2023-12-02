@@ -1,9 +1,36 @@
-export const username = (formValues, errors, setErrors, fieldName) => {
+import { useState } from "react";
+
+export const useFormValidate = (formValues) => {
+    const validators = {
+        username,
+        email,
+        imageUrl,
+        age,
+        password,
+        rePassword
+    }
+
+    const [errors, setErrors] = useState({});
+
+    const validatorsHandler = (fieldName) =>
+        () => validators[fieldName](formValues, errors, setErrors, fieldName);
+
+
+
+    return {
+        validatorsHandler,
+        errors
+    }
+
+
+}
+
+const username = (formValues, errors, setErrors, fieldName) => {
     basicValidations(formValues, errors, setErrors, fieldName);
 }
 
 
-export const email = (formValues, errors, setErrors, fieldName) => {
+const email = (formValues, errors, setErrors, fieldName) => {
     // Basic validations (empty check and length check)
     basicValidations(formValues, errors, setErrors, fieldName);
 
@@ -28,7 +55,7 @@ export const email = (formValues, errors, setErrors, fieldName) => {
     }
 };
 
-export const imageUrl = (formValues, errors, setErrors, fieldName) => {
+const imageUrl = (formValues, errors, setErrors, fieldName) => {
     const urlRegex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,6}(\/[^/#?]+)+\.(jpg|jpeg|png|gif|bmp)$/i;
 
     if (!formValues[fieldName]) {
@@ -51,7 +78,7 @@ export const imageUrl = (formValues, errors, setErrors, fieldName) => {
 
 }
 
-export const age = (formValues, errors, setErrors, fieldName) => {
+const age = (formValues, errors, setErrors, fieldName) => {
 
     if (!formValues[fieldName] || formValues[fieldName] < 18 || formValues[fieldName] > 100) {
         setErrors(state => ({
@@ -67,10 +94,10 @@ export const age = (formValues, errors, setErrors, fieldName) => {
         }
     }
 }
-export const password = (formValues, errors, setErrors, fieldName) => {
+const password = (formValues, errors, setErrors, fieldName) => {
     basicValidations(formValues, errors, setErrors, fieldName);
 }
-export const rePassword = (formValues, errors, setErrors, fieldName) => {
+const rePassword = (formValues, errors, setErrors, fieldName) => {
     basicValidations(formValues, errors, setErrors, fieldName);
 
     if (formValues.password !== formValues.rePassword) {
