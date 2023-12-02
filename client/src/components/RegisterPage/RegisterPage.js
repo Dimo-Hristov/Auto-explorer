@@ -18,38 +18,8 @@ export const RegisterPage = () => {
 
     const [errors, setErrors] = useState({});
 
-    const validatorsHandlers = (fieldName) => {
-        return () => {
-            switch (fieldName) {
-                case 'username':
-                    validators.username(formValues, errors, setErrors, fieldName);
-                    break;
-
-                case 'email':
-                    validators.email(formValues, errors, setErrors, fieldName);
-                    break;
-
-                case 'imageUrl':
-                    validators.imageUrl(formValues, errors, setErrors, fieldName);
-                    break;
-
-                case 'age':
-                    validators.age(formValues, errors, setErrors, fieldName);
-                    break;
-
-                case 'password':
-                    validators.password(formValues, errors, setErrors, fieldName);
-                    break;
-
-                case 'rePassword':
-                    validators.rePassword(formValues, errors, setErrors, fieldName);
-                    break;
-
-                default:
-                    break;
-            }
-        };
-    };
+    const validatorsHandler = (fieldName) =>
+        () => validators[fieldName](formValues, errors, setErrors, fieldName);
 
 
     return (
@@ -68,7 +38,7 @@ export const RegisterPage = () => {
                     autoComplete="username"
                     value={formValues.username}
                     onChange={onChange}
-                    onBlur={validatorsHandlers('username')}
+                    onBlur={validatorsHandler('username')}
                 />
 
 
@@ -83,7 +53,7 @@ export const RegisterPage = () => {
                     autoComplete="email"
                     value={formValues.email}
                     onChange={onChange}
-                    onBlur={validatorsHandlers('email')}
+                    onBlur={validatorsHandler('email')}
                 />
 
                 <label htmlFor="imageUrl">Image URL</label>
@@ -97,7 +67,7 @@ export const RegisterPage = () => {
                     autoComplete="image"
                     value={formValues.imageUrl}
                     onChange={onChange}
-                    onBlur={validatorsHandlers('imageUrl')}
+                    onBlur={validatorsHandler('imageUrl')}
                 />
 
                 <label htmlFor="age">Age</label>
@@ -111,7 +81,7 @@ export const RegisterPage = () => {
                     autoComplete="age"
                     value={formValues.age}
                     onChange={onChange}
-                    onBlur={validatorsHandlers('age')}
+                    onBlur={validatorsHandler('age')}
                 />
 
                 <label htmlFor="password">Password</label>
@@ -125,7 +95,7 @@ export const RegisterPage = () => {
                     autoComplete="new-password"
                     value={formValues.password}
                     onChange={onChange}
-                    onBlur={validatorsHandlers('password')}
+                    onBlur={validatorsHandler('password')}
                 />
 
                 <label htmlFor="rePassword">Repeat password</label>
@@ -139,7 +109,7 @@ export const RegisterPage = () => {
                     autoComplete="new-password"
                     value={formValues.rePassword}
                     onChange={onChange}
-                    onBlur={validatorsHandlers('rePassword')}
+                    onBlur={validatorsHandler('rePassword')}
                 />
 
                 <input
