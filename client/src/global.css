@@ -38,23 +38,27 @@ form{
   width: 80%;
 }
 
-form .submitButton{
+form .submitButton {
   margin-top: 2em;
   height: 3em;
   width: 20%;
   border-radius: 2em;
-  background-color: rgb(235, 158, 99);
+  background-color: rgb(243, 181, 134);
   font-size: 18px;
   font-weight: 700;
   border: 1px solid white;
   color: white;
 }
 
-form .submitButton:hover{
+form .submitButton.active {
+  background-color: rgb(230, 134, 62);
   cursor: pointer;
-  background-color: rgb(243, 181, 134);
 }
 
+form .submitButton.disabled {
+  cursor: not-allowed;
+  background-color: rgb(235, 187, 147);
+}
 
 /* Set core root defaults */
 html:focus-within {

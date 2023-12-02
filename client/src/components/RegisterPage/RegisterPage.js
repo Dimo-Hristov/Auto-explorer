@@ -142,7 +142,12 @@ export const RegisterPage = () => {
                     onBlur={validatorsHandlers('rePassword')}
                 />
 
-                <input type="submit" value='Submit' className='submitButton' />
+                <input
+                    type="submit"
+                    value="Submit"
+                    className={`submitButton ${Object.values(errors).some(error => error !== '') ? 'disabled' : 'active'}`}
+                    disabled={Object.values(errors).some(error => error !== '')}
+                />
             </form>
         </section>
     );
