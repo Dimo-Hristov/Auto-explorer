@@ -11,7 +11,8 @@ export const LoginPage = () => {
         password: '',
     }, onLoginSubmit);
 
-    const { validatorsHandler, errors } = useFormValidate(formValues);
+    const formType = 'login-register'
+    const { validatorsHandler, errors } = useFormValidate(formValues, formType);
 
 
 

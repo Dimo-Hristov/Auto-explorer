@@ -16,7 +16,9 @@ export const RegisterPage = () => {
         rePassword: '',
     }, onRegisterSubmit);
 
-    const { validatorsHandler, errors } = useFormValidate(formValues);
+    const formType = 'login-register';
+
+    const { validatorsHandler, errors } = useFormValidate(formValues, formType);
 
     return (
         <section className={registerStyles}>
