@@ -64,7 +64,7 @@ export const PublishPage = () => {
                 />
 
                 <label htmlFor="engine">Engine</label>
-                <input type="text"
+                <input type="number"
                     name="engine"
                     id="engine"
                     value={formValues.engine}
