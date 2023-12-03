@@ -1,5 +1,6 @@
 import { useState } from "react";
-import * as loginRegisterValidation from '../validators/login-register-validator'
+import * as loginRegisterValidation from '../validators/login-register-validator';
+import * as publishCarValidation from '../validators/publish-car-validator';
 
 export const useFormValidate = (formValues, formType) => {
     let validators;
@@ -7,6 +8,8 @@ export const useFormValidate = (formValues, formType) => {
 
     if (formType === 'login-register') {
         validators = loginRegisterValidation;
+    } else if (formType === 'publish-car') {
+        validators = publishCarValidation;
     } else {
         alert('error')
     }

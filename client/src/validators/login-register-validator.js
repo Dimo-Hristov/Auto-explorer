@@ -44,8 +44,6 @@ export const imageUrl = (formValues, errors, setErrors, fieldName) => {
             [fieldName]: '',
         }));
     }
-
-
 }
 
 export const age = (formValues, errors, setErrors, fieldName) => {
