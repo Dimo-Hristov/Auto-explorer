@@ -39,6 +39,13 @@ export const PublishPage = () => {
                     value={formValues.model}
                     onChange={onChange}
                 />
+                <label htmlFor="price">Price</label>
+                <input type="number"
+                    name="price"
+                    id="price"
+                    value={formValues.price}
+                    onChange={onChange}
+                />
 
                 <label htmlFor="year">Production year</label>
                 <input type="number"
