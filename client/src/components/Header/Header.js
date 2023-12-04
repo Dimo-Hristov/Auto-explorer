@@ -29,7 +29,7 @@ export const Header = () => {
 
                 </ul>
                 {email && (
-                    <span>Hello {email}</span>
+                    <p className='user-email'>Hello {email}</p>
                 )}
 
             </nav>

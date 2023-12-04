@@ -1,18 +1,29 @@
 .header {
-  font-size: 20px;
+  font-size: 24px;
+  background: rgb(189, 241, 241);
+  background: radial-gradient(circle, rgba(189, 241, 241, 0) 0%, rgb(95, 175, 229) 80%);
+  width: 80vw;
+  padding: 1em;
+  border-radius: 0 0 8px 8px;
 }
 
-ul{
+ul {
   text-align: center;
 }
 
-li{
+li {
   display: inline;
   margin: 8px;
 }
 
-li:hover{
+li:hover {
   cursor: pointer;
+}
+
+.user-email {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
 }
 
 
