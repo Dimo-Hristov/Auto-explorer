@@ -11,7 +11,7 @@ export const useFormValidate = (formValues, formType) => {
     } else if (formType === 'publish-car') {
         validators = publishCarValidation;
     } else {
-        alert('error')
+        alert('Invalid form type !')
     }
 
 
@@ -25,6 +25,4 @@ export const useFormValidate = (formValues, formType) => {
         validatorsHandler,
         errors
     }
-
-
 }
