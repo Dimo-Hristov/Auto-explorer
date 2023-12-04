@@ -29,7 +29,7 @@ export const ActionButtons = ({
 
 
     useEffect(() => {
-        const isLiked = selectedCar.likes?.some((like) => like._ownerId === userId)
+        const isLiked = selectedCar.likes.some((like) => like._ownerId === userId)
         setIsLiked(isLiked);
     }, [selectedCar, userId]);
 

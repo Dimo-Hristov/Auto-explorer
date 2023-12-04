@@ -1,6 +1,8 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as authService from '../services/authService';
+import { ErrorContext } from '../contexts/ErrorContext'
+
 
 export const AuthContext = createContext();
 
@@ -9,6 +11,7 @@ export const AuthProvider = ({
 }) => {
     const navigate = useNavigate();
     const [auth, setAuth] = useState({});
+    const { addErrorMessage } = useContext(ErrorContext)
 
     useEffect(() => {
 
@@ -34,23 +37,31 @@ export const AuthProvider = ({
             navigate('/');
         } catch (error) {
             setAuth({})
-            alert(error.message)
+            addErrorMessage(error.message)
         }
     }
 
     const onLoginSubmit = async (formValues) => {
 
         try {
-            const user = await authService.login(formValues);
-            setAuth(user);
+            const response = await authService.login(formValues);
 
-            const serializedUser = JSON.stringify(user)
+
+            if (response.code === 403) {
+                console.log(response.message);
+                addErrorMessage(response.message);
+                return
+            }
+
+            setAuth(response);
+
+            const serializedUser = JSON.stringify(response)
             localStorage.setItem('auth', serializedUser);
 
             navigate('/')
         } catch (error) {
             setAuth({})
-            alert(error.message);
+            addErrorMessage(error.message)
         }
     }
 

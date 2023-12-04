@@ -1,5 +1,4 @@
 const requester = async (method, url, data, token) => {
-
     const options = {
         method,
         headers: {

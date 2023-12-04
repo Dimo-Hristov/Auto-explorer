@@ -1,28 +1,22 @@
 import { createContext, useState } from "react";
 
+export const ErrorContext = createContext();
 
-const ErrorContext = createContext();
-
-export const ErrorHandler = ({
-    children
-}) => {
-
+export const ErrorHandler = ({ children }) => {
     const [errors, setErrors] = useState([]);
 
     const addErrorMessage = (errorMessage) => {
-        setErrors(state => ({ ...state, errorMessage }))
-    }
+        setErrors((state) => [...state, errorMessage]);
+    };
 
     const contextValues = {
-        addErrorMessage, errors
-    }
+        addErrorMessage,
+        errors,
+    };
 
     return (
-
         <ErrorContext.Provider value={contextValues}>
             {children}
-        </ErrorContext.Provider >
-
-    )
-}
-
+        </ErrorContext.Provider>
+    );
+};
