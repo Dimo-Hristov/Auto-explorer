@@ -3,15 +3,15 @@ import { createContext, useState } from "react";
 export const ErrorContext = createContext();
 
 export const ErrorHandler = ({ children }) => {
-    const [errors, setErrors] = useState([]);
+    const [errorMessages, setErrorMessages] = useState([]);
 
     const addErrorMessage = (errorMessage) => {
-        setErrors((state) => [...state, errorMessage]);
+        setErrorMessages((state) => [...state, errorMessage]);
     };
 
     const contextValues = {
         addErrorMessage,
-        errors,
+        errorMessages,
     };
 
     return (
