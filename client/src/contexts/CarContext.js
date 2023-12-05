@@ -4,6 +4,7 @@ import * as likeService from '../services/likeService';
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ErrorContext } from "./ErrorContext";
 
 
 export const CarContext = createContext();
@@ -14,32 +15,36 @@ export const CarProvider = ({
     const navigate = useNavigate();
 
     const { accessToken, userId } = useContext(AuthContext)
-
     const [cars, setCars] = useState([]);
+    const { addErrorMessage } = useContext(ErrorContext)
 
 
     useEffect(() => {
         const fetchData = async () => {
+            try {
+                let fetchedCars = await carService.getAllCars();
 
-            let fetchedCars = await carService.getAllCars();
+                const carsWithLikes = await Promise.all(
+                    fetchedCars.map(async (car) => {
+                        const response = await likeService.getCarLikes(car._id, accessToken);
+                        let likes = []
+                        if (response) {
+                            likes = await response.json();
+                            return { ...car, likes };
+                        }
+                        return { ...car, likes: [] }
+                    })
+                );
+                setCars(carsWithLikes);
+            } catch (error) {
+                addErrorMessage(error.message)
+            }
 
-            const carsWithLikes = await Promise.all(
-                fetchedCars.map(async (car) => {
-                    const response = await likeService.getCarLikes(car._id, accessToken);
-                    let likes = []
-                    if (response) {
-                        likes = await response.json();
-                        return { ...car, likes };
-                    }
-                    return { ...car, likes: [] }
-                })
-            );
-            setCars(carsWithLikes);
 
         };
 
         fetchData();
-    }, [accessToken]);
+    }, [accessToken, addErrorMessage]);
 
 
     const onCreateCarSubmit = async (formValues) => {
@@ -51,7 +56,7 @@ export const CarProvider = ({
             navigate(`/catalog/${car._id}`);
 
         } catch (error) {
-            alert(error.message)
+            addErrorMessage(error.message)
         }
     }
 
@@ -63,7 +68,7 @@ export const CarProvider = ({
             setCars(state => state.map(x => x._id === updatedCar._id ? x = { ...updatedCar, likes: x.likes } : x));
             navigate(`/catalog/${carId}`)
         } catch (error) {
-            alert(error.message)
+            addErrorMessage(error.message)
         }
     }
 
@@ -73,7 +78,7 @@ export const CarProvider = ({
             setCars(state => state.filter(x => x._id !== carId))
             navigate('/catalog')
         } catch (error) {
-
+            addErrorMessage(error.message)
         }
     }
 
@@ -88,7 +93,7 @@ export const CarProvider = ({
                     : x
             ))
         } catch (error) {
-            alert(error.message)
+            addErrorMessage(error.message)
         }
     }
 
@@ -110,7 +115,7 @@ export const CarProvider = ({
                     return updatedCars;
                 });
             } catch (error) {
-                alert(error.message);
+                addErrorMessage(error.message)
             }
         }
     };
