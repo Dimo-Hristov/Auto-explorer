@@ -14,7 +14,7 @@ export const useForm = (initialValues, onSubmitHandler, carId) => {
         e.preventDefault();
         const isEmptyFields = Object.values(formValues).some(value => value === '');
         if (isEmptyFields) {
-            return addErrorMessage('You cannot submit a empty form')
+            return addErrorMessage('You cannot submit a form with missing properties')
         }
 
         onSubmitHandler(formValues, carId);

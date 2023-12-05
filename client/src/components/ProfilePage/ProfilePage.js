@@ -7,7 +7,7 @@ import { CatalogItem } from '../CatalogPage/CatalogItem/CatalogItem';
 
 export const ProfilePage = () => {
     const { cars } = useContext(CarContext);
-    const { userId } = useContext(AuthContext)
+    const { userId } = useContext(AuthContext);
 
     const [filteredCars, setFilteredCars] = useState([]);
     const [title, setTitle] = useState('Please select one of the options')
@@ -26,6 +26,7 @@ export const ProfilePage = () => {
         setFilteredCars(uploadedCars);
         setTitle('Data not found')
     }
+
 
 
     return (
