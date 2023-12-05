@@ -28,10 +28,14 @@ export const AuthProvider = ({
         const { rePassword, ...data } = formValues;
 
         try {
-            const user = await authService.register(data);
-            setAuth(user);
+            const response = await authService.register(data);
+            if (response.code === 409) {
+                return addErrorMessage(response.message)
+            }
 
-            const serializedUser = JSON.stringify(user)
+            setAuth(response);
+
+            const serializedUser = JSON.stringify(response)
             localStorage.setItem('auth', serializedUser);
 
             navigate('/');
@@ -48,9 +52,7 @@ export const AuthProvider = ({
 
 
             if (response.code === 403) {
-                console.log(response.message);
-                addErrorMessage(response.message);
-                return
+                return addErrorMessage(response.message);
             }
 
             setAuth(response);
@@ -72,7 +74,7 @@ export const AuthProvider = ({
             setAuth({});
             localStorage.clear()
         } catch (error) {
-            alert(error.message)
+            addErrorMessage(error.message)
         }
     }
 
