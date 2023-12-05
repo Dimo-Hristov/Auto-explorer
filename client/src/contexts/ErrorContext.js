@@ -7,6 +7,16 @@ export const ErrorHandler = ({ children }) => {
 
     const addErrorMessage = (errorMessage) => {
         setErrorMessages((state) => [...state, errorMessage]);
+
+        setTimeout(() => {
+            removeErrorMessage(errorMessage);
+        }, 5000);
+    };
+
+    const removeErrorMessage = (errorMessageToRemove) => {
+        setErrorMessages((state) =>
+            state.filter((errorMessage) => errorMessage !== errorMessageToRemove)
+        );
     };
 
     const contextValues = {
