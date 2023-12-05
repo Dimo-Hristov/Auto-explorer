@@ -20,6 +20,10 @@
     color: #f8dfdf;
     line-height: 1.6;
   }
+
+  .contacts textarea{
+    resize: none;
+  }
   
   .contacts form {
     display: flex;

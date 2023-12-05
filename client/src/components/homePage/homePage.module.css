@@ -8,6 +8,7 @@
     flex-wrap: nowrap;
     justify-content: center;
     gap: 1em;
+    width: 100%;
 }
 
 .home ul li{

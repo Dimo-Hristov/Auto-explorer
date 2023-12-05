@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useState, useContext } from "react";
+import { ErrorContext } from '../contexts/ErrorContext';
 
 export const useForm = (initialValues, onSubmitHandler, carId) => {
+    const { addErrorMessage } = useContext(ErrorContext)
 
     const [formValues, setFormValues] = useState(initialValues);
 
@@ -12,7 +14,7 @@ export const useForm = (initialValues, onSubmitHandler, carId) => {
         e.preventDefault();
         const isEmptyFields = Object.values(formValues).some(value => value === '');
         if (isEmptyFields) {
-            return
+            return addErrorMessage('You cannot submit a empty form')
         }
 
         onSubmitHandler(formValues, carId);
