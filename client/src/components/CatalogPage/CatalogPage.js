@@ -4,7 +4,7 @@ import { CatalogItem } from "./CatalogItem/CatalogItem";
 import catalogStyles from "./catalogPage.module.css";
 
 export const CatalogPage = () => {
-    const { cars, loading } = useContext(CarContext);
+    const { cars } = useContext(CarContext);
 
     const [filters, setFilters] = useState({
         brand: "",
@@ -110,17 +110,14 @@ export const CatalogPage = () => {
                 </label>
             </div>
 
-            {loading ? (
-                <h2>Loading...</h2>
-            ) : (
-                <ul>
-                    {filteredCars.length === 0 ? (
-                        <h2>No cars match the selected filters</h2>
-                    ) : (
-                        filteredCars.map((car) => <CatalogItem key={car._id} car={car} />)
-                    )}
-                </ul>
-            )}
+            <ul>
+                {filteredCars.length === 0 ? (
+                    <h2>No cars match the selected filters</h2>
+                ) : (
+                    filteredCars.map((car) => <CatalogItem key={car._id} car={car} />)
+                )}
+            </ul>
+
         </section>
     );
 };

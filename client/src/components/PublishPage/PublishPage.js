@@ -1,5 +1,5 @@
 import { useForm } from "../../hooks/useForm";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CarContext } from "../../contexts/CarContext";
 import { useFormValidate } from "../../hooks/useFormValidate";
 
@@ -22,6 +22,13 @@ export const PublishPage = () => {
 
     const formType = "publish-car";
     const { validatorsHandler, errors } = useFormValidate(formValues, formType);
+
+    const [isFormValid, setIsFormValid] = useState(true);
+
+    useEffect(() => {
+        const hasErrors = Object.values(errors).some((error) => error !== "");
+        setIsFormValid(!hasErrors);
+    }, [errors]);
 
     return (
         <section>
@@ -119,7 +126,12 @@ export const PublishPage = () => {
                     onBlur={validatorsHandler("imageUrl")}
                 />
 
-                <input type="submit" value="Submit" className="submitButton" />
+                <input
+                    type="submit"
+                    value="Submit"
+                    className="submitButton"
+                    disabled={!isFormValid}
+                />
             </form>
         </section>
     );
