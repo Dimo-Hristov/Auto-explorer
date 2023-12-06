@@ -34,6 +34,7 @@ export const DetailsPage = () => {
                         <th>Colror</th>
                         <th>Engine</th>
                         <th>Horse power</th>
+                        <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +45,7 @@ export const DetailsPage = () => {
                         <td>{selectedCar.color}</td>
                         <td>{selectedCar.engine}</td>
                         <td>{selectedCar.hp}</td>
+                        <td>{selectedCar.price} $</td>
                     </tr>
                 </tbody>
             </table>

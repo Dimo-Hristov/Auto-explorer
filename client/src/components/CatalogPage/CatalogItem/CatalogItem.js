@@ -11,7 +11,7 @@ export const CatalogItem = ({
                 <img src={car.imageUrl} alt={car.brand} />
                 <span>Likes: {car.likes?.length || 0}</span>
                 <h2>{car.brand} - {car.model}</h2>
-                <p>Engine: {car.engine}</p>
+                <p>Price: {car.price} $</p>
             </Link>
 
             <ActionButtons selectedCar={car} />

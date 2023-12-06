@@ -4,3 +4,7 @@
     flex-wrap: wrap;
     gap: 2em;
 }
+
+.filters input{
+max-width: 100px;
+}
