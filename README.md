@@ -22,7 +22,27 @@ This document provides a comprehensive overview of the Car Trading Platform proj
 
 The Car Trading Platform is built using React and Node.js. The application architecture comprises various components and services working together to create a dynamic and engaging platform.
 
-## Components
+## Custom Hooks
+
+1. **useForm Custom Hook:**
+
+Reusability: The useForm hook encapsulates form state management, making it easily reusable across different components. This promotes a clean and modular code structure.
+
+Error Handling: Integration with the ErrorContext for error message handling demonstrates an effective way to manage and display form-related errors to users.
+
+Dynamic Form Handling: The hook efficiently handles dynamic form input changes, making it suitable for various forms with different structures.
+
+Submission Handling: The onSubmit function ensures that form submission is conditioned on the completeness of the form, providing a user-friendly experience by preventing submission with missing properties.
+
+2. **useFormValidate Custom Hook:**
+
+Dynamic Validators: The ability to dynamically select validators based on the formType enhances the flexibility of the hook. This allows you to reuse the same hook for different forms with distinct validation requirements.
+
+Real-time Validation: The hook performs real-time validation as users interact with the form. This ensures immediate feedback on form validity, contributing to a smoother user experience.
+
+State Management: The hook effectively manages and updates the form's error state, keeping it in sync with the form values. The use of useEffect reflects a well-thought-out approach to handling state changes.
+
+Overall Form Validity: The isFormValid state provides a convenient way to track the overall validity of the form, facilitating conditional rendering or interaction based on the form's current state.
 
 ## Components
 
@@ -52,7 +72,7 @@ The Car Trading Platform is built using React and Node.js. The application archi
 
 13. **Contacts Page Component:** Provides contact details for users to reach out, fostering communication.
 
-14. **Catalog Page Component:**Catalog Component: Displays a list of cars available for exploration, providing a comprehensive view of the available vehicles. It includes a filtration feature for easy browsing and narrowing down options based on user preferences.
+14. **Catalog Page Component:** Catalog Component: Displays a list of cars available for exploration, providing a comprehensive view of the available vehicles. It includes a filtration feature for easy browsing and narrowing down options based on user preferences.
 
 ## Services
 
