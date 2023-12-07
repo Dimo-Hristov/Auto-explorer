@@ -7,22 +7,19 @@ export const email = (formValues, errors, setErrors, fieldName) => {
 
     basicValidations(formValues, errors, setErrors, fieldName);
 
-
-    if (!formValues[fieldName]) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formValues[fieldName])) {
-            setErrors(state => ({
-                ...state,
-                [fieldName]: 'Invalid email format',
-            }));
-        } else if (errors[fieldName]) {
-            setErrors(state => ({
-                ...state,
-                [fieldName]: '',
-            }));
-        }
-
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formValues[fieldName])) {
+        setErrors(state => ({
+            ...state,
+            [fieldName]: 'Invalid email format',
+        }));
+    } else if (errors[fieldName]) {
+        setErrors(state => ({
+            ...state,
+            [fieldName]: '',
+        }));
     }
+
 };
 
 export const imageUrl = (formValues, errors, setErrors, fieldName) => {
