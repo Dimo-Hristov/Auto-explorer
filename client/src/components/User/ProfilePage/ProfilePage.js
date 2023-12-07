@@ -18,13 +18,13 @@ export const ProfilePage = () => {
         );
 
         setFilteredCars(likedCars);
-        setTitle('Data not found')
+        setTitle('You dont have liked cars yet.')
     }
 
     const showUploadedCars = () => {
         const uploadedCars = cars.filter((car) => car._ownerId === userId);
         setFilteredCars(uploadedCars);
-        setTitle('Data not found')
+        setTitle('You dont have uploaded cars yet.')
     }
 
 

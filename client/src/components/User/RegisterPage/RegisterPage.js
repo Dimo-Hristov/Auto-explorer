@@ -10,7 +10,6 @@ export const RegisterPage = () => {
     const { formValues, onChange, onSubmit } = useForm({
         username: '',
         email: '',
-        imageUrl: '',
         age: '',
         password: '',
         rePassword: '',
@@ -52,20 +51,6 @@ export const RegisterPage = () => {
                     value={formValues.email}
                     onChange={onChange}
                     onBlur={validatorsHandler('email')}
-                />
-
-                <label htmlFor="imageUrl">Image URL</label>
-                {errors.imageUrl && (
-                    <p>{errors.imageUrl}</p>
-                )}
-                <input
-                    type="text"
-                    name="imageUrl"
-                    id="imageUrl"
-                    autoComplete="image"
-                    value={formValues.imageUrl}
-                    onChange={onChange}
-                    onBlur={validatorsHandler('imageUrl')}
                 />
 
                 <label htmlFor="age">Age</label>
