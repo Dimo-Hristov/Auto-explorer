@@ -1,7 +1,7 @@
-import { useForm } from "../../hooks/useForm";
+import { useForm } from "../../../hooks/useForm";
 import { useContext } from "react";
-import { CarContext } from "../../contexts/CarContext";
-import { useFormValidate } from "../../hooks/useFormValidate";
+import { CarContext } from "../../../contexts/CarContext";
+import { useFormValidate } from "../../../hooks/useFormValidate";
 
 export const PublishPage = () => {
     const { onCreateCarSubmit } = useContext(CarContext);

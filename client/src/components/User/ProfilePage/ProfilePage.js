@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
-import { CarContext } from '../../contexts/CarContext';
+import { CarContext } from '../../../contexts/CarContext';
 
 import profilePageStyles from './profilePage.module.css';
-import { AuthContext } from '../../contexts/AuthContext';
-import { CatalogItem } from '../CatalogPage/CatalogItem/CatalogItem';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { CatalogItem } from '../../Main/CatalogItem/CatalogItem';
 
 export const ProfilePage = () => {
     const { cars } = useContext(CarContext);

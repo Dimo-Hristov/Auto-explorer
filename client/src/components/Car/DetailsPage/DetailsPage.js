@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import { CarContext } from "../../contexts/CarContext";
+import { CarContext } from "../../../contexts/CarContext";
 import { useContext } from "react";
 import detailsPageStyles from './detailsPage.module.css';
-import { ActionButtons } from "../ActionButtons/ActionButtons";
+import { ActionButtons } from "../../Common/ActionButtons/ActionButtons";
 
 
 export const DetailsPage = () => {

@@ -1,8 +1,8 @@
 import registerStyles from './registerPage.module.css';
-import { useForm } from '../../hooks/useForm';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useForm } from '../../../hooks/useForm';
+import { AuthContext } from '../../../contexts/AuthContext';
 import { useContext } from 'react';
-import { useFormValidate } from '../../hooks/useFormValidate';
+import { useFormValidate } from '../../../hooks/useFormValidate';
 
 export const RegisterPage = () => {
     const { onRegisterSubmit } = useContext(AuthContext)

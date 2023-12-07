@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { CarContext } from "../../contexts/CarContext";
-import { CatalogItem } from "./CatalogItem/CatalogItem";
+import { CarContext } from "../../../contexts/CarContext";
+import { CatalogItem } from "../CatalogItem/CatalogItem";
 import catalogStyles from "./catalogPage.module.css";
 
 export const CatalogPage = () => {

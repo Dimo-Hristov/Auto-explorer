@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import catalogItemStyles from './catalogItem.module.css'
-import { ActionButtons } from '../../ActionButtons/ActionButtons'
+import { ActionButtons } from '../../Common/ActionButtons/ActionButtons'
 
 export const CatalogItem = ({
     car

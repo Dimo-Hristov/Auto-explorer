@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CarContext } from "../../contexts/CarContext";
-import { AuthContext } from "../../contexts/AuthContext";
+import { CarContext } from "../../../contexts/CarContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 import actionButtonsStyles from './actionButtons.module.css'
 
 

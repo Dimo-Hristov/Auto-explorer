@@ -1,20 +1,20 @@
 import './global.css';
 import { Header } from "./components/Header/Header";
 import { Routes, Route } from 'react-router-dom';
-import { HomePage } from './components/HomePage/HomePage';
-import { CatalogPage } from './components/CatalogPage/CatalogPage';
-import { PublishPage } from './components/PublishPage/PublishPage';
-import { ProfilePage } from './components/ProfilePage/ProfilePage';
-import { LoginPage } from './components/LoginPage/LoginPage';
-import { RegisterPage } from './components/RegisterPage/RegisterPage';
+import { HomePage } from './components/Main/HomePage/HomePage';
+import { CatalogPage } from './components/Main/CatalogPage/CatalogPage';
+import { PublishPage } from './components/Car/PublishPage/PublishPage';
+import { ProfilePage } from './components/User/ProfilePage/ProfilePage';
+import { LoginPage } from './components/User/LoginPage/LoginPage';
+import { RegisterPage } from './components//User/RegisterPage/RegisterPage';
 import { AuthProvider } from './contexts/AuthContext';
-import { Logout } from './components/Logout/Logout';
+import { Logout } from './components/User/Logout/Logout';
 import { CarProvider } from './contexts/CarContext';
-import { Footer } from './components/Footer/Footer';
-import { DetailsPage } from './components/DetailsPage/DetailsPage';
-import { EditCar } from './components/EditCar/EditCar';
-import { AboutPage } from './components/AboutPage/AboutPage';
-import { ContactsPage } from './components/ContactsPage/ContactsPage';
+import { Footer } from './components/Footer/Footer/Footer';
+import { DetailsPage } from './components/Car/DetailsPage/DetailsPage';
+import { EditCar } from './components/Car/EditCar/EditCar';
+import { AboutPage } from './components/Footer/AboutPage/AboutPage';
+import { ContactsPage } from './components/Footer/ContactsPage/ContactsPage';
 import { ErrorHandler } from './contexts/ErrorContext';
 
 

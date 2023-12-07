@@ -1,5 +1,5 @@
-import { CarContext } from '../../contexts/CarContext';
-import { CatalogItem } from '../CatalogPage/CatalogItem/CatalogItem';
+import { CarContext } from '../../../contexts/CarContext';
+import { CatalogItem } from '../CatalogItem/CatalogItem';
 import homeStyles from './homePage.module.css';
 import { useContext } from 'react';
 

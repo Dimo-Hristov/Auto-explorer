@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { useForm } from "../../hooks/useForm";
-import { CarContext } from "../../contexts/CarContext";
+import { useForm } from "../../../hooks/useForm";
+import { CarContext } from "../../../contexts/CarContext";
 import { useParams } from "react-router-dom";
 
 export const EditCar = () => {
