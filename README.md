@@ -21,19 +21,31 @@ The car trading platform is built using React, and Node.js. The application arch
 
 Components
 Header Component: Provides navigation links and user account options for seamless interaction with the platform.
+
 Footer Component: Offers additional information and links for users, enhancing their overall experience.
+
 Profile Page Component: Displays a user's liked and uploaded cars, providing a personalized view of their automotive journey.
+
 Catalog Item Component: Represents a single car item, showcasing details and allowing users to explore individual vehicles.
+
 Register Page Component: Facilitates user registration, allowing enthusiasts to join the platform and contribute to the community.
+
 Logout Component: Enables users to log out, ensuring secure access control and account management.
+
 Publish Page Component: Allows users to publish and share details about their cars with the community.
+
 Login Page Component: Manages user authentication, providing a secure and streamlined login process.
+
 Error Handler Component: Handles and displays error messages, enhancing user experience and communication.
 Services
+
 Auth Service: Manages user authentication, registration, and logout functionality.
+
 Car Service: Handles communication with the backend API to fetch, create, edit, and delete cars. Also, retrieves liked cars and updates car likes.
+
 Like Service: Manages likes on cars, allowing users to express interest in specific vehicles.
 Routes
+
 The car trading platform utilizes React Router for efficient navigation:
 
 /: Home page displaying a selection of liked and uploaded cars.
