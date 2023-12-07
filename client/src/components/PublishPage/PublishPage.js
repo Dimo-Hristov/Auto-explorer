@@ -1,5 +1,5 @@
 import { useForm } from "../../hooks/useForm";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { CarContext } from "../../contexts/CarContext";
 import { useFormValidate } from "../../hooks/useFormValidate";
 
@@ -21,14 +21,8 @@ export const PublishPage = () => {
     );
 
     const formType = "publish-car";
-    const { validatorsHandler, errors } = useFormValidate(formValues, formType);
+    const { validatorsHandler, errors, isFormValid } = useFormValidate(formValues, formType);
 
-    const [isFormValid, setIsFormValid] = useState(true);
-
-    useEffect(() => {
-        const hasErrors = Object.values(errors).some((error) => error !== "");
-        setIsFormValid(!hasErrors);
-    }, [errors]);
 
     return (
         <section>
@@ -124,13 +118,14 @@ export const PublishPage = () => {
                     value={formValues.imageUrl}
                     onChange={onChange}
                     onBlur={validatorsHandler("imageUrl")}
+                    maxLength={200}
                 />
 
                 <input
                     type="submit"
                     value="Submit"
-                    className="submitButton"
                     disabled={!isFormValid}
+                    className={isFormValid ? "submitButton activeButton" : " submitButton disabledButton"}
                 />
             </form>
         </section>

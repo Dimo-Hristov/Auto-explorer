@@ -18,7 +18,7 @@ export const RegisterPage = () => {
 
     const formType = 'login-register';
 
-    const { validatorsHandler, errors } = useFormValidate(formValues, formType);
+    const { validatorsHandler, errors, isFormValid } = useFormValidate(formValues, formType);
 
     return (
         <section className={registerStyles}>
@@ -113,7 +113,8 @@ export const RegisterPage = () => {
                 <input
                     type="submit"
                     value="Submit"
-                    className={`submitButton ${Object.values(errors).some(error => error !== '') ? 'disabled' : 'active'}`}
+                    disabled={!isFormValid}
+                    className={isFormValid ? "submitButton activeButton" : " submitButton disabledButton"}
                 />
             </form>
         </section>

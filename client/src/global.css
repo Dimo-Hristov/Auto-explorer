@@ -43,13 +43,21 @@ form .submitButton {
   height: 3em;
   width: 20%;
   border-radius: 2em;
-  background-color: rgb(243, 181, 134);
+
   font-size: 18px;
   font-weight: 700;
   border: 1px solid white;
   color: white;
-  background-color: rgb(230, 134, 62);
+
   cursor: pointer;
+}
+
+.submitButton.activeButton{
+  background-color: rgb(230, 134, 62);
+}
+
+.submitButton.disabledButton {
+  background-color: rgb(243, 181, 134);
 }
 
 

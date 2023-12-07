@@ -8,3 +8,9 @@
 .filters input{
 max-width: 100px;
 }
+
+.filters {
+    margin-top: 1em;
+    padding: 8px;
+    border: 1px dashed black;
+}
