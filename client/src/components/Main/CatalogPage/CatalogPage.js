@@ -71,7 +71,7 @@ export const CatalogPage = () => {
                         <option value="">All</option>
                         <option value="BMW">BMW</option>
                         <option value="Mercedes">Mercedes</option>
-                        <option value="Mercedes">Audi</option>
+                        <option value="Audi">Audi</option>
                     </select>
                 </label>
 
