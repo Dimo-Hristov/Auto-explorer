@@ -2,11 +2,15 @@ import { useContext } from "react";
 import { useForm } from "../../../hooks/useForm";
 import { CarContext } from "../../../contexts/CarContext";
 import { useParams } from "react-router-dom";
+import { useFormValidate } from "../../../hooks/useFormValidate";
 
 export const EditCar = () => {
 
     const { carId } = useParams();
     const { cars } = useContext(CarContext);
+
+
+
 
     const selectedCar = cars.find(x => x._id === carId);
 
@@ -20,7 +24,12 @@ export const EditCar = () => {
         color: selectedCar.color,
         engine: selectedCar.engine,
         hp: selectedCar.hp,
+        price: selectedCar.price,
     }, onEditCarSubmit, carId);
+
+
+    const formType = 'publish-car';
+    const { validatorsHandler, errors, isFormValid } = useFormValidate(formValues, formType);
 
 
     return (
@@ -29,64 +38,103 @@ export const EditCar = () => {
 
             <form onSubmit={onSubmit}>
                 <label htmlFor="brand">Brand</label>
-                <input type="text"
+                {errors.brand && <p>{errors.brand}</p>}
+                <select
                     id="brand"
                     name="brand"
                     value={formValues.brand}
                     onChange={onChange}
-                />
+                    onBlur={validatorsHandler("brand")}
+                >
+                    <option value="">Select a brand</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Mercedes">Mercedes</option>
+                    <option value="Audi">Audi</option>
+                </select>
 
                 <label htmlFor="model">Model</label>
-                <input type="text"
+                {errors.model && <p>{errors.model}</p>}
+                <input
+                    type="text"
                     name="model"
                     id="model"
                     value={formValues.model}
                     onChange={onChange}
+                    onBlur={validatorsHandler("model")}
+                />
+                <label htmlFor="price">Price</label>
+                {errors.price && <p>{errors.price}</p>}
+                <input
+                    type="number"
+                    name="price"
+                    id="price"
+                    value={formValues.price}
+                    onChange={onChange}
+                    onBlur={validatorsHandler("price")}
                 />
 
                 <label htmlFor="year">Production year</label>
-                <input type="number"
+                {errors.year && <p>{errors.year}</p>}
+                <input
+                    type="number"
                     name="year"
                     id="year"
                     value={formValues.year}
                     onChange={onChange}
+                    onBlur={validatorsHandler("year")}
                 />
 
                 <label htmlFor="color">Color</label>
-                <input type="text"
+                {errors.color && <p>{errors.color}</p>}
+                <input
+                    type="text"
                     name="color"
                     id="color"
                     value={formValues.color}
                     onChange={onChange}
+                    onBlur={validatorsHandler("color")}
                 />
 
                 <label htmlFor="engine">Engine</label>
-                <input type="text"
+                {errors.engine && <p>{errors.engine}</p>}
+                <input
+                    type="number"
                     name="engine"
                     id="engine"
                     value={formValues.engine}
                     onChange={onChange}
+                    onBlur={validatorsHandler("engine")}
                 />
 
                 <label htmlFor="hp">Horse power</label>
-                <input type="number"
+                {errors.hp && <p>{errors.hp}</p>}
+                <input
+                    type="number"
                     name="hp"
                     id="hp"
                     value={formValues.hp}
                     onChange={onChange}
+                    onBlur={validatorsHandler("hp")}
                 />
 
-                <label htmlFor="hp">Image url</label>
-                <input type="text"
+                <label htmlFor="imageUrl">Image url</label>
+                {errors.imageUrl && <p>{errors.imageUrl}</p>}
+                <input
+                    type="text"
                     name="imageUrl"
                     id="imageUrl"
                     value={formValues.imageUrl}
                     onChange={onChange}
+                    onBlur={validatorsHandler("imageUrl")}
+                    maxLength={200}
                 />
 
-
-                <input type="submit" value='Submit' className='submitButton' />
-
+                <input
+                    type="submit"
+                    value="Submit"
+                    disabled={!isFormValid}
+                    className={isFormValid ? "submitButton activeButton" : " submitButton disabledButton"}
+                />
             </form>
         </section>
     );
