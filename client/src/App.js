@@ -17,6 +17,7 @@ import { AboutPage } from './components/Footer/AboutPage/AboutPage';
 import { ContactsPage } from './components/Footer/ContactsPage/ContactsPage';
 import { ErrorHandler } from './contexts/ErrorContext';
 import AuthGuard from './components/guards/AuthGuard';
+import GuestGuard from './components/guards/GuestGuard';
 
 
 function App() {
@@ -30,12 +31,6 @@ function App() {
                             <Route path='/' element={<CarProvider><HomePage /></CarProvider>} />
                             <Route path='/catalog' element={<CarProvider><CatalogPage /></CarProvider>} />
                             <Route path='/catalog/:carId' element={<CarProvider><DetailsPage /></CarProvider>} />
-
-
-
-                            <Route path='/login' element={<LoginPage />} />
-                            <Route path='/register' element={<RegisterPage />} />
-
                             <Route path='/about' element={<AboutPage />}></Route>
                             <Route path='/contact' element={<ContactsPage />}></Route>
                             <Route path='*' element={(<div>
@@ -43,11 +38,19 @@ function App() {
                                 <p>Sorry, the page you are looking for does not exist.</p>
                             </div>)} />
 
+
+                            {/* Authenticated paths */}
                             <Route element={<AuthGuard />}>
                                 <Route path='/logout' element={<Logout />} />
                                 <Route path='/catalog/:carId/edit' element={<CarProvider><EditCar /></CarProvider>} />
                                 <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
                                 <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
+                            </Route>
+
+                            {/* Guest paths */}
+                            <Route element={<GuestGuard />}>
+                                <Route path='/login' element={<LoginPage />} />
+                                <Route path='/register' element={<RegisterPage />} />
                             </Route>
                         </Routes>
                     </main>
