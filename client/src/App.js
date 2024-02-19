@@ -16,11 +16,10 @@ import { EditCar } from './components/Car/EditCar/EditCar';
 import { AboutPage } from './components/Footer/AboutPage/AboutPage';
 import { ContactsPage } from './components/Footer/ContactsPage/ContactsPage';
 import { ErrorHandler } from './contexts/ErrorContext';
+import AuthGuard from './components/guards/AuthGuard';
 
 
 function App() {
-
-
     return (
         <>
             <ErrorHandler>
@@ -31,18 +30,25 @@ function App() {
                             <Route path='/' element={<CarProvider><HomePage /></CarProvider>} />
                             <Route path='/catalog' element={<CarProvider><CatalogPage /></CarProvider>} />
                             <Route path='/catalog/:carId' element={<CarProvider><DetailsPage /></CarProvider>} />
-                            <Route path='/catalog/:carId/edit' element={<CarProvider><EditCar /></CarProvider>} />
-                            <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
-                            <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
+
+
+
                             <Route path='/login' element={<LoginPage />} />
                             <Route path='/register' element={<RegisterPage />} />
-                            <Route path='/logout' element={<Logout />} />
+
                             <Route path='/about' element={<AboutPage />}></Route>
                             <Route path='/contact' element={<ContactsPage />}></Route>
                             <Route path='*' element={(<div>
                                 <h1>Not Found</h1>
                                 <p>Sorry, the page you are looking for does not exist.</p>
                             </div>)} />
+
+                            <Route element={<AuthGuard />}>
+                                <Route path='/logout' element={<Logout />} />
+                                <Route path='/catalog/:carId/edit' element={<CarProvider><EditCar /></CarProvider>} />
+                                <Route path='/publish' element={<CarProvider><PublishPage /></CarProvider>} />
+                                <Route path='/profile' element={<CarProvider><ProfilePage /></CarProvider>} />
+                            </Route>
                         </Routes>
                     </main>
                 </AuthProvider>

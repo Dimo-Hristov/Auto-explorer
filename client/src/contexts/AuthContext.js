@@ -13,6 +13,7 @@ export const AuthProvider = ({
     const [auth, setAuth] = useState({});
     const { addErrorMessage } = useContext(ErrorContext)
 
+
     useEffect(() => {
 
         const serializedUser = localStorage.getItem('auth')
@@ -23,6 +24,7 @@ export const AuthProvider = ({
         }
     }, []);
 
+    const isAuthenticated = auth.accessToken ? true : false;
 
     const onRegisterSubmit = async (formValues) => {
         const { rePassword, ...data } = formValues;
@@ -87,6 +89,7 @@ export const AuthProvider = ({
         accessToken: auth.accessToken,
         email: auth.email,
         userId: auth._id,
+        isAuthenticated,
     }
 
     return (
