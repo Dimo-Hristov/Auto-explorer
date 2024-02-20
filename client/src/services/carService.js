@@ -1,6 +1,6 @@
 import * as requester from './requester';
 
-const baseUrl = "http://localhost:3030/data/cars";
+const baseUrl = "http://localhost:3030/cars";
 
 export const createCar = async (formValues, accessToken) => {
 

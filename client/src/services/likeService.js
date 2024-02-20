@@ -1,5 +1,5 @@
 import * as requester from './requester';
-const baseUrl = "http://localhost:3030/data/likes";
+const baseUrl = "http://localhost:3030/likes";
 
 
 export const LikeCar = async (carId, accessToken) => {

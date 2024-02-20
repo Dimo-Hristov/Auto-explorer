@@ -52,9 +52,8 @@ export const AuthProvider = ({
         try {
             const resData = await authService.login(formValues);
 
-
-            if (resData.code === 403) {
-                return addErrorMessage(resData.message);
+            if (resData.code !== 200) {
+                return addErrorMessage(resData.error);
             }
 
             setAuth(resData);
@@ -65,7 +64,7 @@ export const AuthProvider = ({
             navigate('/')
         } catch (error) {
             setAuth({})
-            addErrorMessage(error.message)
+            addErrorMessage(error.error.error)
         }
     }
 

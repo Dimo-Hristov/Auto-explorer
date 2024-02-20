@@ -14,14 +14,8 @@ const requester = async (method, url, data, token) => {
         options.body = JSON.stringify(data);
     }
 
-    try {
-        const response = await fetch(url, options);
-        return response;
-    } catch (error) {
-        console.log(error.message);
-    }
 
-
+    return await fetch(url, options);
 }
 
 export const get = requester.bind(null, 'GET')
