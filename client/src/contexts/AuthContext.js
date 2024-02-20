@@ -43,7 +43,7 @@ export const AuthProvider = ({
             navigate('/');
         } catch (error) {
             setAuth({})
-            addErrorMessage(error.message)
+            addErrorMessage(error.error)
         }
     }
 
