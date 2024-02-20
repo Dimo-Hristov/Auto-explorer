@@ -10,7 +10,6 @@ export const RegisterPage = () => {
     const { formValues, onChange, onSubmit } = useForm({
         username: '',
         email: '',
-        age: '',
         password: '',
         rePassword: '',
     }, onRegisterSubmit);
@@ -53,19 +52,6 @@ export const RegisterPage = () => {
                     onBlur={validatorsHandler('email')}
                 />
 
-                <label htmlFor="age">Age</label>
-                {errors.age && (
-                    <p>{errors.age}</p>
-                )}
-                <input
-                    type="number"
-                    name="age"
-                    id="age"
-                    autoComplete="age"
-                    value={formValues.age}
-                    onChange={onChange}
-                    onBlur={validatorsHandler('age')}
-                />
 
                 <label htmlFor="password">Password</label>
                 {errors.password && (
