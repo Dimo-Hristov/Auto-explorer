@@ -77,7 +77,7 @@ export const rePassword = (formValues, errors, setErrors, fieldName) => {
     }
 }
 
-// Length > 0 && Length > 30
+// Length >= 2 && Length > 30
 function basicValidations(formValues, errors, setErrors, selectedField) {
     if (formValues[selectedField] === '' || formValues[selectedField] === undefined) {
         setErrors(state => ({
@@ -89,6 +89,12 @@ function basicValidations(formValues, errors, setErrors, selectedField) {
             ...state,
             [selectedField]: `Maximum length is 30 symbols`
         }));
+    } else if (formValues[selectedField].length < 2) {
+        setErrors(state => ({
+            ...state,
+            [selectedField]: 'Minimum length is 2 symbols'
+        }))
+
     } else if (errors[selectedField]) {
         setErrors(state => ({
             ...state,
