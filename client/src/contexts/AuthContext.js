@@ -31,8 +31,8 @@ export const AuthProvider = ({
 
         try {
             const resData = await authService.register(data);
-            if (resData.code === 409) {
-                return addErrorMessage(resData.message)
+            if (resData.code !== 200) {
+                return addErrorMessage(resData.error)
             }
 
             setAuth(resData);
