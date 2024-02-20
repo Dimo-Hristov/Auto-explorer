@@ -14,7 +14,7 @@ export const ProfilePage = () => {
 
     const showLikedCars = () => {
         const likedCars = cars.filter((car) =>
-            car.likes?.some((like) => like._ownerId === userId)
+            car.likes?.some((like) => like === userId)
         );
 
         setFilteredCars(likedCars);
