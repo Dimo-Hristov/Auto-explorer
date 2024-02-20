@@ -3,7 +3,6 @@ const Car = require('../models/Car')
 
 async function getAll() {
     return Car.find({})
-
 };
 
 async function getByUserId(userId) {
@@ -11,7 +10,7 @@ async function getByUserId(userId) {
 
 };
 async function getById(id) {
-    return Car.findById(id).populate('_ownerId')
+    return Car.findById(id).populate('_ownerId', 'likes')
 };
 
 async function create(data) {
@@ -44,6 +43,15 @@ async function likeCar(carId, userId) {
     return existing.save()
 }
 
+async function unLikeCar(carId, userId) {
+
+    const existing = await Car.findById(carId);
+    const indexToRemove = existing.likes.findIndex(x => x === userId)
+
+    existing.likes.splice(indexToRemove, 1);
+    return existing.save();
+}
+
 async function getMyLikes(id) {
     const cars = await Car.find({})
     let arr = [];
@@ -66,5 +74,6 @@ module.exports = {
     getByUserId,
     getMyCars,
     likeCar,
-    getMyLikes
+    getMyLikes,
+    unLikeCar
 }

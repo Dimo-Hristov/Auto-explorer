@@ -10,26 +10,28 @@ export const ActionButtons = ({
 }) => {
     const { userId } = useContext(AuthContext);
     const carId = selectedCar._id;
-    const { onLikeSubmit, onUnlikeSubmit, onDeleteCarSubmit } = useContext(CarContext);
+    const { onLikeSubmit, onDeleteCarSubmit } = useContext(CarContext);
 
 
     const [isDeleteClicked, setIsDeleteClicked] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
 
     const likeCarHandler = () => {
-        onLikeSubmit({ likedCar: carId })
+        onLikeSubmit(carId)
         setIsLiked(true)
+        selectedCar.likes.push(userId)
     }
 
 
     const unLikeCarHandler = () => {
         setIsLiked(false)
-        onUnlikeSubmit(carId)
+        onLikeSubmit(carId)
+        selectedCar.likes = selectedCar.likes.filter((like) => like !== userId)
     }
 
 
     useEffect(() => {
-        const isLiked = selectedCar.likes?.some((like) => like._ownerId === userId)
+        const isLiked = selectedCar.likes?.some((like) => like === userId)
         setIsLiked(isLiked);
     }, [selectedCar, userId]);
 

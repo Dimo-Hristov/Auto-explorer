@@ -1,6 +1,6 @@
 const carsController = require('express').Router();
 
-const { getAll, create, getById, update, deleteById, getByUserId, getMyCars, likeCar, getMyLikes } = require('../service/carService');
+const { getAll, create, getById, update, deleteById, getByUserId, getMyCars, likeCar, getMyLikes, unLikeCar } = require('../service/carService');
 
 
 carsController.get('/', async (req, res) => {
@@ -97,9 +97,9 @@ carsController.delete('/:id', async (req, res) => {
 
 carsController.get('/like/:id', async (req, res) => {
     try {
-        const car = await getById(req.params.id)
-        if (car._ownerId._id != req.user._id
-            && car.likes.map(x => x.includes(req.user?._id) == false)) {
+        const car = await getById(req.params.id);
+
+        if (!car.likes.includes(req.user?._id)) {
             try {
                 await likeCar(req.params.id, req.user._id);
                 const car = await getById(req.params.id)
@@ -109,9 +109,22 @@ carsController.get('/like/:id', async (req, res) => {
                 res.status(400).json({ err: error.message })
             }
         }
+
+        if (car.likes.includes(req.user?._id)) {
+            try {
+                console.log('in');
+                await unLikeCar(req.params.id, req.user._id);
+                const car = await getById(req.params.id);
+
+                return res.status(200).json(car)
+            } catch (error) {
+
+            }
+        }
+
     } catch (error) {
         res.status(400).json({ err: error.message })
-
+        res.status(400).json({ err: error.message })
     }
 });
 

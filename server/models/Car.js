@@ -20,7 +20,6 @@ const carSchema = new Schema({
     },
     hp: {
         type: Number, required: true,
-        min: [0.5, 'Minumum power 0.5 HP!'],
     },
     imageUrl: {
         type: String,
