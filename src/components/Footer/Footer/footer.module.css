@@ -9,3 +9,11 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
+@media(max-width:950px){
+    .footer{
+        flex-direction: column-reverse;
+        font-size: 16px;
+        min-height: 3%;
+    }
+}
