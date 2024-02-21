@@ -5,12 +5,21 @@
     gap: 2em;
 }
 
-.filters input{
-max-width: 100px;
+
+.filters input {
+width: 200px;
 }
+
+.filters label{
+   width: 250px;
+}
+
 
 .filters {
     margin-top: 1em;
     padding: 8px;
-    border: 1px dashed black;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }

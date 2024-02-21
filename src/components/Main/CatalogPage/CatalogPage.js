@@ -64,15 +64,11 @@ export const CatalogPage = () => {
             <div className={catalogStyles.filters}>
                 <label>
                     Brand:
-                    <select
+                    <input
+                        type="string"
                         value={filters.brand}
-                        onChange={(e) => handleFilterChange("brand", e.target.value)}
-                    >
-                        <option value="">All</option>
-                        <option value="BMW">BMW</option>
-                        <option value="Mercedes">Mercedes</option>
-                        <option value="Audi">Audi</option>
-                    </select>
+                        onChange={(e) => handleFilterChange("brand", e.target.value.toLocaleUpperCase())}
+                    />
                 </label>
 
                 <label>
