@@ -1,36 +1,49 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useForm";
 import { CarContext } from "../../../contexts/CarContext";
 import { useParams } from "react-router-dom";
 import { useFormValidate } from "../../../hooks/useFormValidate";
 
 export const EditCar = () => {
-
     const { carId } = useParams();
-    const { cars } = useContext(CarContext);
+    const { cars, onEditCarSubmit } = useContext(CarContext);
+    const [selectedCar, setSelectedCar] = useState(null)
+
+    useEffect(() => {
+        setSelectedCar(cars.find(x => x._id === carId));
+    }, [cars, carId]);
 
 
 
-
-    const selectedCar = cars.find(x => x._id === carId);
-
-    const { onEditCarSubmit } = useContext(CarContext);
-
-    const { formValues, onChange, onSubmit } = useForm({
-        brand: selectedCar.brand,
-        model: selectedCar.model,
-        year: selectedCar.year,
-        imageUrl: selectedCar.imageUrl,
-        color: selectedCar.color,
-        engine: selectedCar.engine,
-        hp: selectedCar.hp,
-        price: selectedCar.price,
+    const { formValues, onChange, onSubmit, setFormValues } = useForm({
+        brand: "",
+        model: "",
+        year: "",
+        imageUrl: "",
+        color: "",
+        engine: "",
+        hp: "",
+        price: "",
     }, onEditCarSubmit, carId);
-
 
     const formType = 'publish-car';
     const { validatorsHandler, errors, isFormValid } = useFormValidate(formValues, formType);
 
+    useEffect(() => {
+        if (selectedCar) {
+            console.log(selectedCar);
+            setFormValues({
+                brand: selectedCar.brand,
+                model: selectedCar.model,
+                year: selectedCar.year,
+                imageUrl: selectedCar.imageUrl,
+                color: selectedCar.color,
+                engine: selectedCar.engine,
+                hp: selectedCar.hp,
+                price: selectedCar.price,
+            });
+        }
+    }, [selectedCar, setFormValues, formValues]);
 
     return (
         <section>

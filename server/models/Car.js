@@ -28,6 +28,9 @@ const carSchema = new Schema({
             message: 'Invalid URL, must start with HTTP/HTTPS'
         }
     },
+    engine: {
+        type: Number, required: true
+    },
     _ownerId: { type: ObjectId, ref: 'User', required: true },
     likes: { type: Array, default: [], required: false }
 });
