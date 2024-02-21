@@ -26,6 +26,7 @@ async function update(id, car) {
     existing.power = car.hp;
     existing.price = car.price;
     existing.img = car.imageUrl;
+    existing.color = car.color
     return existing.save()
 }
 
