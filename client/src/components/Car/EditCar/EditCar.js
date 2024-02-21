@@ -43,7 +43,7 @@ export const EditCar = () => {
                 price: selectedCar.price,
             });
         }
-    }, [selectedCar, setFormValues, formValues]);
+    }, [selectedCar, setFormValues]);
 
     return (
         <section>
