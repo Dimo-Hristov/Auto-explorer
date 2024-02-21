@@ -39,6 +39,7 @@ export const CarProvider = ({
     const onCreateCarSubmit = async (formValues) => {
 
         try {
+            formValues.brand = formValues.brand.toUpperCase();
             const car = await carService.createCar(formValues, accessToken);
 
             setCars(state => [...state, car]);
@@ -51,7 +52,7 @@ export const CarProvider = ({
 
     const onEditCarSubmit = async (formValues, carId) => {
         try {
-
+            formValues.brand = formValues.brand.toUpperCase();
             const updatedCar = await carService.editCar(formValues, carId, accessToken);
 
             setCars(state => state.map(x => x._id === updatedCar._id ? x = { ...updatedCar, likes: x.likes } : x));

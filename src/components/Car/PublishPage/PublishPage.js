@@ -15,7 +15,7 @@ export const PublishPage = () => {
             color: "",
             engine: "",
             hp: "",
-            likes: [],
+            price: ""
         },
         onCreateCarSubmit
     );
@@ -31,19 +31,14 @@ export const PublishPage = () => {
             <form onSubmit={onSubmit}>
                 <label htmlFor="brand">Brand</label>
                 {errors.brand && <p>{errors.brand}</p>}
-                <select
-                    id="brand"
+                <input
+                    type="text"
                     name="brand"
+                    id="brand"
                     value={formValues.brand}
                     onChange={onChange}
                     onBlur={validatorsHandler("brand")}
-                >
-                    <option value="">Select a brand</option>
-                    <option value="BMW">BMW</option>
-                    <option value="Mercedes">Mercedes</option>
-                    <option value="Audi">Audi</option>
-                </select>
-
+                />
                 <label htmlFor="model">Model</label>
                 {errors.model && <p>{errors.model}</p>}
                 <input
