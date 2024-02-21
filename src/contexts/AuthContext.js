@@ -52,8 +52,7 @@ export const AuthProvider = ({
         try {
             const resData = await authService.login(formValues);
 
-            if (resData.code !== undefined && resData.code !== 200) {
-                console.log(resData);
+            if (resData.error) {
                 return addErrorMessage(resData.error);
             }
 
@@ -64,6 +63,7 @@ export const AuthProvider = ({
 
             navigate('/home')
         } catch (error) {
+            console.log('error catch');
             setAuth({})
             addErrorMessage(error.error)
         }
