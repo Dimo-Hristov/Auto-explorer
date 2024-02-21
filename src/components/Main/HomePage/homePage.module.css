@@ -1,11 +1,11 @@
 :root {
-    --ul-height: 600px;
+    --ul-height: 500px;
 }
 
 .home ul {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 1em;
     width: 100%;
@@ -24,11 +24,4 @@
     align-items: center;
 }
 
-.home ul li:nth-child(2) {
-    height: calc(var(--ul-height) - 30px);
-}
-
-.home ul li:nth-child(3) {
-    height: calc(var(--ul-height) - 60px);
-}
 

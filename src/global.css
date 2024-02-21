@@ -5,6 +5,9 @@
 *::after {
   box-sizing: border-box;
 }
+main, header{
+  margin: 0 auto;
+}
 
 /* Remove default margin */
 body,
