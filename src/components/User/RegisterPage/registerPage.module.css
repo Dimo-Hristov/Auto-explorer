@@ -5,5 +5,16 @@ label{
 
 input{
     margin-bottom: 8px;
-    width: 40%;
+    width: 50%;
+}
+
+@media(max-width: 1030px){
+    input{
+        width: 70%;
+    }
+}
+@media(max-width: 800px){
+    input{
+        width: 260px;
+    }
 }
