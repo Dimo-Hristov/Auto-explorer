@@ -28,15 +28,12 @@ function App() {
                     <Header />
                     <main className="app">
                         <Routes>
-                            <Route path='/' element={<CarProvider><HomePage /></CarProvider>} />
+                            <Route path='/home' element={<CarProvider><HomePage /></CarProvider>} />
                             <Route path='/catalog' element={<CarProvider><CatalogPage /></CarProvider>} />
                             <Route path='/catalog/:carId' element={<CarProvider><DetailsPage /></CarProvider>} />
                             <Route path='/about' element={<AboutPage />}></Route>
                             <Route path='/contact' element={<ContactsPage />}></Route>
-                            <Route path='*' element={(<div>
-                                <h1>Not Found</h1>
-                                <p>Sorry, the page you are looking for does not exist.</p>
-                            </div>)} />
+                            <Route path='*' element={<CarProvider><HomePage /></CarProvider>} />
 
 
                             {/* Authenticated paths */}

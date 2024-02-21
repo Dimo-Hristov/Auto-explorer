@@ -40,7 +40,7 @@ export const AuthProvider = ({
             const serializedUser = JSON.stringify(resData)
             localStorage.setItem('auth', serializedUser);
 
-            navigate('/');
+            navigate('/home');
         } catch (error) {
             setAuth({})
             addErrorMessage(error.error)
@@ -62,7 +62,7 @@ export const AuthProvider = ({
             const serializedUser = JSON.stringify(resData)
             localStorage.setItem('auth', serializedUser);
 
-            navigate('/')
+            navigate('/home')
         } catch (error) {
             setAuth({})
             addErrorMessage(error.error)
