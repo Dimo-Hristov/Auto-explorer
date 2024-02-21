@@ -4,9 +4,10 @@ import { AuthContext } from "../../../contexts/AuthContext";
 
 export const Logout = () => {
 
-    const { onLogout } = useContext(AuthContext)
+    const { setAuth } = useContext(AuthContext)
 
-    onLogout()
+    localStorage.clear();
+    setAuth({})
 
     return <Navigate to="/" />
 
