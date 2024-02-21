@@ -1,6 +1,6 @@
 import * as requester from "./requester";
 
-const baseUrl = "http://localhost:3030/auth";
+const baseUrl = "https://auto-explorer-server.onrender.com/auth";
 
 export const register = async (data) => {
     const response = await requester.post(`${baseUrl}/register`, data);

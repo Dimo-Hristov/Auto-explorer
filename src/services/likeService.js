@@ -1,5 +1,5 @@
 import * as requester from './requester';
-const baseUrl = "http://localhost:3030/cars/like";
+const baseUrl = "https://auto-explorer-server.onrender.com/cars/like";
 
 
 export const LikeCar = async (carId, accessToken) => {
