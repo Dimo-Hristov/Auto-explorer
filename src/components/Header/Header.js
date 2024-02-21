@@ -1,7 +1,7 @@
 import headerSyles from './header.module.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ErrorContext } from '../../contexts/ErrorContext';
 
 export const Header = () => {
@@ -14,6 +14,20 @@ export const Header = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (isMenuOpen && !event.target.closest(`.${headerSyles.header}`)) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [isMenuOpen]);
     return (
         <>
             <header className={headerSyles.header}>
