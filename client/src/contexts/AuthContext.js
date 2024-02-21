@@ -70,9 +70,7 @@ export const AuthProvider = ({
     }
 
     const onLogout = async () => {
-
         try {
-            await authService.logout(auth.accessToken);
             setAuth({});
             localStorage.clear()
         } catch (error) {

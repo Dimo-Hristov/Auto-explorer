@@ -14,5 +14,3 @@ export const login = async (data) => {
     return resData;
 };
 
-export const logout = async (token) =>
-    await requester.get(`${baseUrl}/logout`, undefined, token);
