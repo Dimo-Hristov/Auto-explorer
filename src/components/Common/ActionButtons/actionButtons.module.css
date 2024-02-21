@@ -22,3 +22,10 @@
     background: radial-gradient(circle, rgba(178, 204, 204, 0.338) 0%, rgba(195, 214, 228, 0.383) 90%);
     cursor: pointer;
   }
+
+  @media(max-width: 430px){
+    .actionButtons a,  .actionButtons button{
+      min-width: 60px;
+      padding: 6px 0;
+    }
+  }
